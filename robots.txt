@@ -1,0 +1,56 @@
+# robots.txt
+
+# Robots.txt for Aren Kitchen Consultancy
+# This file tells search engines which pages to crawl and which to avoid
+
+User-agent: *
+Allow: /
+
+# Allow all major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Disallow specific file types that shouldn't be indexed
+Disallow: /*.pdf$
+Disallow: /*.doc$
+Disallow: /*.docx$
+Disallow: /*.xls$
+Disallow: /*.xlsx$
+Disallow: /*.ppt$
+Disallow: /*.pptx$
+
+# Disallow admin or private areas (if any)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /backup/
+
+# Disallow CGI and script directories
+Disallow: /cgi-bin/
+Disallow: /scripts/
+
+# Allow CSS and JS files for proper rendering
+Allow: /style.css
+Allow: /app.js
+Allow: /*.css$
+Allow: /*.js$
+
+# Allow image files
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.gif$
+Allow: /*.webp$
+Allow: /*.svg$
+
+# Sitemap location
+Sitemap: https://arenkitchenconsultancy.com/sitemap.xml
+
+# Crawl delay (optional - only use if needed)
+# Crawl-delay: 1
