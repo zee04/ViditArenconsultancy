@@ -1003,7 +1003,7 @@ h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
 
 .portrait-ring::before {
   content: '';
-  background: url('images/vidit1.jpg') center/cover no-repeat;
+  background: url('images/vidit1.png') center/cover no-repeat;
   border-radius: 50%;
   position: absolute;
   top: 50%;
