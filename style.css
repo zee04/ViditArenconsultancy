@@ -746,7 +746,7 @@ select.form-control {
   --color-gold-accent: #DAA520;
   --color-gold-light: #F4E09A;
   --color-warm-white: #fafafa;
-  --color-glass-bg: rgba(255, 255, 255, 0.1);
+  --color-glass-bg: rgba(255, 255, 255, 0.05);
   --color-glass-border: rgba(255, 255, 255, 0.2);
   --color-glass-shadow: rgba(0, 0, 0, 0.1);
 
