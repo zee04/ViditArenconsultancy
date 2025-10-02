@@ -75,30 +75,48 @@ class Navigation {
         // Mobile menu toggle
         this.mobileToggle.addEventListener('click', this.toggleMobileMenu.bind(this));
 
-        // Close mobile menu when clicking nav links
-        const navLinks = this.navMenu.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    this.closeMobileMenu();
-                }
-            });
+       // START: REVISED NAVIGATION EVENT HANDLING
+
+// Close mobile menu when clicking a standard nav link (not a dropdown)
+const navLinks = this.navMenu.querySelectorAll('.nav-link:not(.dropdown-toggle)');
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    if (window.innerWidth <= 768 && this.isOpen) {
+      this.closeMobileMenu();
+    }
+  });
+});
+
+// Handle dropdown toggles on mobile
+this.dropdowns.forEach(dropdown => {
+  const toggle = dropdown.querySelector('.dropdown-toggle');
+  
+  if (toggle) {
+    toggle.addEventListener('click', (e) => {
+      // Only run this logic on mobile
+      if (window.innerWidth <= 768) {
+        e.preventDefault(); // IMPORTANT: Stops the link from trying to navigate
+
+        // Check if the dropdown is already open
+        const isActive = dropdown.classList.contains('active');
+
+        // First, close all other dropdowns to keep things clean
+        this.dropdowns.forEach(d => {
+          if (d !== dropdown) {
+            d.classList.remove('active');
+          }
         });
 
-        // Handle dropdown clicks on mobile
-        this.dropdowns.forEach(dropdown => {
-            const toggle = dropdown.querySelector('.dropdown-toggle');
-            const menu = dropdown.querySelector('.dropdown-menu');
-            
-            if (toggle && menu) {
-                toggle.addEventListener('click', (e) => {
-                    if (window.innerWidth <= 768) {
-                        e.preventDefault();
-                        this.toggleDropdown(dropdown);
-                    }
-                });
-            }
-        });
+        // Now, toggle the one that was clicked
+        if (isActive) {
+          dropdown.classList.remove('active'); // If it was open, close it
+        } else {
+          dropdown.classList.add('active'); // If it was closed, open it
+        }
+      }
+    });
+  }
+});
 
         // Scroll behavior
         window.addEventListener('scroll', this.handleScroll.bind(this));
