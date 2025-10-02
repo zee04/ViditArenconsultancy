@@ -359,21 +359,28 @@ class CardEffects {
     }
 
     handleMouseMove(e) {
-        if (window.innerWidth <= 768) return; // Skip on mobile
-        
-        const card = e.currentTarget;
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        const rotateX = (y - centerY) / 10;
-        const rotateY = (centerX - x) / 10;
-        
-        card.style.transform = `translateY(-4px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    }
+    // Skip this effect on mobile devices
+    if (window.innerWidth <= 768) return;
+
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    // Check if the element has the 'large-card' class
+    const isLargeCard = card.classList.contains('large-card');
+
+    // Use a divisor of 20 for large cards (less rotation) and 10 for others
+    const rotationDivisor = isLargeCard ? 20 : 10;
+
+    const rotateX = (y - centerY) / rotationDivisor;
+    const rotateY = (centerX - x) / rotationDivisor;
+
+    card.style.transform = `translateY(-4px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+}
 }
 
 // Loading screen (optional enhancement)
