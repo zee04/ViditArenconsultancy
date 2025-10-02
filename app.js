@@ -75,48 +75,37 @@ class Navigation {
         // Mobile menu toggle
         this.mobileToggle.addEventListener('click', this.toggleMobileMenu.bind(this));
 
-       // START: REVISED NAVIGATION EVENT HANDLING
+   // The new, corrected bindEvents() method
+bindEvents() {
+  // Mobile menu toggle
+  this.mobileToggle.addEventListener('click', this.toggleMobileMenu.bind(this));
 
-// Close mobile menu when clicking a standard nav link (not a dropdown)
-const navLinks = this.navMenu.querySelectorAll('.nav-link:not(.dropdown-toggle)');
-navLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    if (window.innerWidth <= 768 && this.isOpen) {
-      this.closeMobileMenu();
-    }
-  });
-});
-
-// Handle dropdown toggles on mobile
-this.dropdowns.forEach(dropdown => {
-  const toggle = dropdown.querySelector('.dropdown-toggle');
-  
-  if (toggle) {
-    toggle.addEventListener('click', (e) => {
-      // Only run this logic on mobile
-      if (window.innerWidth <= 768) {
-        e.preventDefault(); // IMPORTANT: Stops the link from trying to navigate
-
-        // Check if the dropdown is already open
-        const isActive = dropdown.classList.contains('active');
-
-        // First, close all other dropdowns to keep things clean
-        this.dropdowns.forEach(d => {
-          if (d !== dropdown) {
-            d.classList.remove('active');
-          }
-        });
-
-        // Now, toggle the one that was clicked
-        if (isActive) {
-          dropdown.classList.remove('active'); // If it was open, close it
-        } else {
-          dropdown.classList.add('active'); // If it was closed, open it
-        }
+  // Close the main mobile menu ONLY when clicking a link that should navigate away.
+  // This now includes standard links, the new arrow links, and links inside the dropdowns.
+  const linksThatCloseMenu = this.navMenu.querySelectorAll('.nav-link:not(.dropdown-toggle), .dropdown-arrow-link, .dropdown-menu a');
+  linksThatCloseMenu.forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 768 && this.isOpen) {
+        this.closeMobileMenu();
       }
     });
-  }
-});
+  });
+
+  // Handle toggling the dropdowns on mobile (when tapping the text).
+  this.dropdowns.forEach(dropdown => {
+    const toggle = dropdown.querySelector('.dropdown-toggle');
+    if (toggle) {
+      toggle.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+          e.preventDefault(); // Prevents any default action.
+          dropdown.classList.toggle('active'); // Simply opens or closes the dropdown.
+        }
+      });
+    }
+  });
+
+ 
+/* --- END: FINAL JAVASCRIPT FOR MOBILE NAVIGATION --- */
 
         // Scroll behavior
         window.addEventListener('scroll', this.handleScroll.bind(this));
