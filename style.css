@@ -979,7 +979,7 @@ h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
   z-index: 1; /* Places it in the back */
 
   /* --- YOUR IMAGE GOES HERE --- */
-  background-image: url('images/heroback.jpg'); 
+  background-image: url('images/heroback.JPG'); 
   background-size: cover;
   background-position: center;
   background-attachment: fixed; /* Parallax effect */
