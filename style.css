@@ -1092,7 +1092,7 @@ h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
   z-index: 1; /* Puts it behind the content */
 
   /* --- Use the SAME image and effect as your hero section --- */
-  background-image: url('images/heroback3.png'); 
+  background-image: url('images/heroback3.PNG'); 
   background-size: cover;
   background-position: center;
   background-attachment: fixed; /* The key to the seamless effect */
