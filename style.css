@@ -1457,37 +1457,70 @@ h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
     transform: rotate(-45deg) translate(7px, -6px);
   }
 
+/* --- START: ADD ALL OF THIS INSIDE YOUR @media (max-width: 768px) BLOCK --- */
+
+/* 1. Fixes the main menu item alignment */
+.header .nav-menu {
+  align-items: flex-start;
+  gap: var(--space-16);
+}
+.header .nav-item {
+  width: 100%;
+}
+
+/* 2. Correctly hides the dropdown menu by default and makes it transparent */
 .dropdown-menu {
   position: static;
   opacity: 0;
   visibility: hidden;
-  max-height: 0; /* Used for the slide-down animation */
+  max-height: 0;
   transform: none;
-  background: transparent; /* Removes the inner block background */
-  box-shadow: none;
-  border: none;
-  margin-top: var(--space-8);
+  background: transparent !important; /* Creates the "floating text" effect */
+  box-shadow: none !important;
+  border: none !important;
   padding: 0;
+  margin-top: var(--space-16);
   overflow: hidden;
-  /* Uses a smoother transition */
   transition: all var(--duration-normal) var(--ease-standard);
 }
-
-/* This shows the dropdown menu when you tap it */
 .dropdown.active .dropdown-menu {
   opacity: 1;
   visibility: visible;
-  max-height: 500px; /* Allows the menu to expand */
+  max-height: 500px;
 }
 
-/* This styles the links inside the dropdown for a floating effect */
+/* 3. Styles the new dropdown container and arrow for the far-right layout */
+.dropdown-container {
+  display: flex;
+  justify-content: space-between; /* Pushes text left and arrow right */
+  align-items: center;
+  width: 100%;
+}
+.dropdown-toggle {
+  flex-grow: 1; /* Allows the text to take up all the space */
+  cursor: pointer;
+}
+.dropdown-arrow-link {
+  padding: var(--space-8) var(--space-16);
+}
+.dropdown-arrow {
+  color: var(--color-gold-accent);
+  font-weight: 600;
+  font-size: 1.4em;
+  font-style: normal;
+  transition: transform 0.3s var(--ease-standard);
+}
+.dropdown.active .dropdown-arrow {
+  transform: rotate(90deg); /* Rotates the arrow when the menu is open */
+}
+
+/* 4. Indents the links inside the dropdown for a clean hierarchy */
 .dropdown-menu .dropdown-link {
-  /* Indents the sub-menu items for better hierarchy */
-  padding-left: var(--space-48); 
-  background: transparent !important; /* Ensures no background on hover */
+  padding-left: var(--space-32);
 }
 
-/* END: REVISED MOBILE DROPDOWN STYLES */
+/* --- END OF MOBILE NAVIGATION FIXES --- */
+
   
   .hero-content {
     grid-template-columns: 1fr;
