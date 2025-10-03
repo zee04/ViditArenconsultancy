@@ -1734,3 +1734,32 @@ a.btn.btn--secondary:focus {
 .btn, a.btn {
     -webkit-tap-highlight-color: transparent;
 }
+
+/* ======================================================= */
+/*        FINAL FIXES FOR SPACING & FOOTER LINKS           */
+/* ======================================================= */
+
+/* 
+  FIX 1: Adds vertical space between the social media sections 
+  on the contact page, as you requested.
+*/
+.contact-details .btn--fullwidth {
+  margin-bottom: 24px;
+}
+
+/* 
+  FIX 2: Styles the new social links (Instagram, etc.) in the footer
+  to use your brand's gold color, removing the default blue.
+*/
+.footer-social-links a {
+  color: var(--color-gold-accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.footer-social-links a:hover {
+  filter: brightness(1.3);
+  text-decoration: underline;
+}
+
