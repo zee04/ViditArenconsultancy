@@ -898,6 +898,12 @@ h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
   position: relative;
 }
 
+/* Hides the mobile-only arrow on desktop */
+.dropdown-arrow {
+  display: none; 
+}
+
+
 .dropdown-menu {
   position: absolute;
   top: 100%;
@@ -1457,9 +1463,9 @@ h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
     transform: rotate(-45deg) translate(7px, -6px);
   }
 
-/* --- START: ADD ALL OF THIS INSIDE YOUR @media (max-width: 768px) BLOCK --- */
+/* --- START: ADD THIS BLOCK INSIDE YOUR @media QUERY --- */
 
-/* 1. Fixes the main menu item alignment */
+/* 1. This fixes the main menu item alignment */
 .header .nav-menu {
   align-items: flex-start;
   gap: var(--space-16);
@@ -1468,58 +1474,47 @@ h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
   width: 100%;
 }
 
-/* 2. Correctly hides the dropdown menu by default and makes it transparent */
-.dropdown-menu {
-  position: static;
-  opacity: 0;
-  visibility: hidden;
-  max-height: 0;
-  transform: none;
-  background: transparent !important; /* Creates the "floating text" effect */
-  box-shadow: none !important;
-  border: none !important;
-  padding: 0;
-  margin-top: var(--space-16);
-  overflow: hidden;
-  transition: all var(--duration-normal) var(--ease-standard);
-}
-.dropdown.active .dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-  max-height: 500px;
+/* 2. This styles the main link (e.g., "Services") and positions the arrow */
+.dropdown-toggle {
+    display: flex;
+    justify-content: space-between; /* Pushes text left and arrow right */
+    align-items: center;
+    width: 100%;
 }
 
-/* 3. Styles the new dropdown container and arrow for the far-right layout */
-.dropdown-container {
-  display: flex;
-  justify-content: space-between; /* Pushes text left and arrow right */
-  align-items: center;
-  width: 100%;
-}
-.dropdown-toggle {
-  flex-grow: 1; /* Allows the text to take up all the space */
-  cursor: pointer;
-}
-.dropdown-arrow-link {
-  padding: var(--space-8) var(--space-16);
-}
+/* 3. This styles the arrow and makes it visible on mobile */
 .dropdown-arrow {
-  color: var(--color-gold-accent);
-  font-weight: 600;
-  font-size: 1.4em;
-  font-style: normal;
-  transition: transform 0.3s var(--ease-standard);
+    display: inline-block; 
+    font-style: normal;
+    font-size: 1.4em;
+    color: var(--color-gold-accent);
+    padding: var(--space-8) var(--space-16); /* Makes the tap area larger */
+    cursor: pointer; 
+    transition: transform 0.3s var(--ease-standard);
 }
 .dropdown.active .dropdown-arrow {
-  transform: rotate(90deg); /* Rotates the arrow when the menu is open */
+    transform: rotate(90deg); /* Rotates arrow down when open */
 }
 
-/* 4. Indents the links inside the dropdown for a clean hierarchy */
-.dropdown-menu .dropdown-link {
-  padding-left: var(--space-32);
+/* 4. This styles the dropdown sub-menu for the slide-down effect */
+.dropdown-menu {
+    position: static; /* Overrides desktop absolute positioning */
+    transform: none;
+    box-shadow: none;
+    border: none;
+    background: transparent !important;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    margin-top: 0;
+    transition: max-height 0.4s var(--ease-standard), margin-top 0.4s var(--ease-standard);
+}
+.dropdown.active .dropdown-menu {
+    margin-top: var(--space-16);
+    max-height: 500px;
 }
 
-/* --- END OF MOBILE NAVIGATION FIXES --- */
+/* --- END OF MOBILE FIXES --- */
 
   
   .hero-content {
