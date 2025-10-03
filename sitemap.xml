@@ -1,104 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  
-  <!-- Homepage -->
+
+  <!-- 1. Homepage (Highest Priority) -->
   <url>
-    <loc>https://arenkitchenconsultancy.com/</loc>
-    <lastmod>2025-09-30</lastmod>
+    <loc>https://zee04.github.io/ViditArenconsultancy/</loc>
+    <lastmod>2025-10-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://arenkitchenconsultancy.com/images/chef-vidit-aren-portrait.jpg</image:loc>
-      <image:title>Chef Vidit Aren Portrait</image:title>
-      <image:caption>Chef Vidit Aren - Culinary Innovator and Visionary Chef</image:caption>
+      <image:loc>https://zee04.github.io/ViditArenconsultancy/images/og-home.jpg</image:loc>
+      <image:title>Chef Vidit Aren | [Aren Culinary]</image:title>
+      <image:caption>The official consultancy of renowned Chef Vidit Aren.</image:caption>
     </image:image>
   </url>
 
-  <!-- Services Section -->
+  <!-- 2. About Page -->
   <url>
-    <loc>https://arenkitchenconsultancy.com/#services</loc>
-    <lastmod>2025-09-30</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://zee04.github.io/ViditArenconsultancy/about.html</loc>
+    <lastmod>2025-10-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://zee04.github.io/ViditArenconsultancy/images/og-about.jpg</image:loc>
+      <image:title>About Chef Vidit Aren</image:title>
+    </image:image>
+  </url>
+
+  <!-- 3. Services Page -->
+  <url>
+    <loc>https://zee04.github.io/ViditArenconsultancy/service.html</loc>
+    <lastmod>2025-10-04</lastmod>
+    <changefreq>yearly</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://arenkitchenconsultancy.com/images/culinary-consultancy-icon.jpg</image:loc>
-      <image:title>Culinary Consultancy Services</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://arenkitchenconsultancy.com/images/hospitality-consultancy-icon.jpg</image:loc>
-      <image:title>Hospitality Consultancy Services</image:title>
+      <image:loc>https://zee04.github.io/ViditArenconsultancy/images/og-services.jpg</image:loc>
+      <image:title>Culinary & Hospitality Consulting Services</image:title>
     </image:image>
   </url>
 
-  <!-- Projects Section -->
+  <!-- 4. Work Page -->
   <url>
-    <loc>https://arenkitchenconsultancy.com/#projects</loc>
-    <lastmod>2025-09-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://zee04.github.io/ViditArenconsultancy/work.html</loc>
+    <lastmod>2025-10-04</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.9</priority>
     <image:image>
-      <image:loc>https://arenkitchenconsultancy.com/images/little-food-co-project.jpg</image:loc>
-      <image:title>Little Food Co Project</image:title>
-      <image:caption>Culinary consultancy project with 14+ years experience serving A-list celebrities</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://arenkitchenconsultancy.com/images/meta-whatsapp-project.jpg</image:loc>
-      <image:title>META WhatsApp Ad Film Project</image:title>
-      <image:caption>Food styling and consultation services for META WhatsApp Privacy campaign</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://arenkitchenconsultancy.com/images/vantara-machaan-project.jpg</image:loc>
-      <image:title>VANTARA NIWAS MACHAAN Restaurant Launch</image:title>
-      <image:caption>Exclusive restaurant launch at Anant Ambani's seven-star hotel</image:caption>
+      <image:loc>https://zee04.github.io/ViditArenconsultancy/images/og-work.jpg</image:loc>
+      <image:title>Project Portfolio: Vantara, Basque, Breve</image:title>
     </image:image>
   </url>
 
-  <!-- About Section -->
+  <!-- 5. Media Page -->
   <url>
-    <loc>https://arenkitchenconsultancy.com/#about</loc>
-    <lastmod>2025-09-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://zee04.github.io/ViditArenconsultancy/media.html</loc>
+    <lastmod>2025-10-04</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.9</priority>
     <image:image>
-      <image:loc>https://arenkitchenconsultancy.com/images/chef-vidit-cooking-action.jpg</image:loc>
-      <image:title>Chef Vidit Aren in Action</image:title>
-      <image:caption>Distinguished chef and culinary leader based in Mumbai</image:caption>
+      <image:loc>https://zee04.github.io/ViditArenconsultancy/images/og-media.jpg</image:loc>
+      <image:title>Media Features: Star vs Food, CN Traveller</image:title>
     </image:image>
   </url>
 
-  <!-- Contact Section -->
+  <!-- 6. Contact Page -->
   <url>
-    <loc>https://arenkitchenconsultancy.com/#contact</loc>
-    <lastmod>2025-09-30</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://zee04.github.io/ViditArenconsultancy/contact.html</loc>
+    <lastmod>2025-10-04</lastmod>
+    <changefreq>yearly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://zee04.github.io/ViditArenconsultancy/images/og-contact.jpg</image:loc>
+      <image:title>Contact [Aren Culinary]</image:title>
+    </image:image>
   </url>
 
   <!-- Individual Service Pages (if created separately) -->
   <url>
-    <loc>https://arenkitchenconsultancy.com/services/culinary-consultancy</loc>
+    <loc>https://zee04.github.io/ViditArenconsultancy/services/culinary-consultancy</loc>
     <lastmod>2025-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://arenkitchenconsultancy.com/services/hospitality-consultancy</loc>
+    <loc>https://zee04.github.io/ViditArenconsultancy/services/hospitality-consultancy</loc>
     <lastmod>2025-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://arenkitchenconsultancy.com/services/brand-development</loc>
+    <loc>https://zee04.github.io/ViditArenconsultancy/services/brand-development</loc>
     <lastmod>2025-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://arenkitchenconsultancy.com/services/menu-development</loc>
+    <loc>https://zee04.github.io/ViditArenconsultancy/services/menu-development</loc>
     <lastmod>2025-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -106,21 +106,21 @@
 
   <!-- Project Detail Pages (if created) -->
   <url>
-    <loc>https://arenkitchenconsultancy.com/projects/little-food-co</loc>
+    <loc>https://zee04.github.io/ViditArenconsultancy/projects/little-food-co</loc>
     <lastmod>2025-09-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
 
   <url>
-    <loc>https://arenkitchenconsultancy.com/projects/meta-whatsapp</loc>
+    <loc>https://zee04.github.io/ViditArenconsultancy/projects/meta-whatsapp</loc>
     <lastmod>2025-09-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
 
   <url>
-    <loc>https://arenkitchenconsultancy.com/projects/vantara-machaan</loc>
+    <loc>https://zee04.github.io/ViditArenconsultancy/projects/vantara-machaan</loc>
     <lastmod>2025-09-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
