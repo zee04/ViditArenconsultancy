@@ -1008,27 +1008,27 @@ h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
 /* 2. Set the specific image for each page's section */
 /* --- About Page --- */
 .about-section.has-bg-image::before {
-  background-image: url('images/panback.JPG '); 
+  background-image: url('images/panback.jpg'); 
 }
 
 /* --- Services Page --- */
 .services-section.has-bg-image::before {
-  background-image: url('path/to/your/images/services-image.jpg'); 
+  background-image: url('images/panback.jpg'); 
 }
 
 /* --- Our Work Page --- */
 .work-section.has-bg-image::before {
-  background-image: url('path/to/your/images/our-work-image.jpg'); 
+  background-image: url('images/panback.jpg'); 
 }
 
 /* --- Media Page --- */
 .media-section.has-bg-image::before {
-  background-image: url('path/to/your/images/media-image.jpg'); 
+  background-image: url('images/panback.jpg'); 
 }
 
 /* --- Contact Page --- */
 .contact-section.has-bg-image::before {
-  background-image: url('path/to/your/images/contact-image.jpg'); 
+  background-image: url('images/panback.jpg'); 
 }
 
 
