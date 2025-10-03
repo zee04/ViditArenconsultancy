@@ -70,56 +70,56 @@ class Navigation {
         this.bindEvents();
         this.handleScroll();
     }
+    
+// REPLACE your current bindEvents() method with this one.
 
-
-
-   // The new, corrected bindEvents() method
 bindEvents() {
-  // Mobile menu toggle
-  this.mobileToggle.addEventListener('click', this.toggleMobileMenu.bind(this));
-
-  // Close the main mobile menu ONLY when clicking a link that should navigate away.
-  // This now includes standard links, the new arrow links, and links inside the dropdowns.
-  const linksThatCloseMenu = this.navMenu.querySelectorAll('.nav-link:not(.dropdown-toggle), .dropdown-arrow-link, .dropdown-menu a');
-  linksThatCloseMenu.forEach(link => {
-    link.addEventListener('click', () => {
-      if (window.innerWidth <= 768 && this.isOpen) {
-        this.closeMobileMenu();
-      }
+    // --- 1. MOBILE MENU TOGGLE (This part is working for you) ---
+    this.mobileToggle.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevents other clicks from interfering
+        this.toggleMobileMenu();
     });
-  });
 
-  // Handle toggling the dropdowns on mobile (when tapping the text).
-  this.dropdowns.forEach(dropdown => {
-    const toggle = dropdown.querySelector('.dropdown-toggle');
-    if (toggle) {
-      toggle.addEventListener('click', (e) => {
-        if (window.innerWidth <= 768) {
-          e.preventDefault(); // Prevents any default action.
-          dropdown.classList.toggle('active'); // Simply opens or closes the dropdown.
-        }
-      });
-    }
-  });
+    // --- 2. NEW DROPDOWN LOGIC (This is the new part) ---
+    this.dropdowns.forEach(dropdown => {
+        const toggleLink = dropdown.querySelector('.dropdown-toggle');
+        
+        // Dynamically create and add the arrow icon using JavaScript
+        const arrow = document.createElement('span');
+        arrow.className = 'dropdown-arrow';
+        arrow.innerHTML = '&gt;';
+        toggleLink.appendChild(arrow);
 
- 
-/* --- END: FINAL JAVASCRIPT FOR MOBILE NAVIGATION --- */
-
-        // Scroll behavior
-        window.addEventListener('scroll', this.handleScroll.bind(this));
-
-        // Close mobile menu on resize
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768 && this.isOpen) {
-                this.closeMobileMenu();
+        // Create a specific click listener just FOR THE ARROW
+        arrow.addEventListener('click', (e) => {
+            // On mobile, tapping the ARROW toggles the dropdown
+            if (window.innerWidth <= 768) {
+                e.preventDefault();  // STOPS the browser from following the parent link
+                e.stopPropagation(); // STOPS the click from bubbling up to the parent link
+                
+                // Toggle the 'active' class on the parent .dropdown element
+                dropdown.classList.toggle('active');
             }
         });
+    });
 
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', this.handleAnchorClick.bind(this));
-        });
-    }
+    // --- 3. YOUR EXISTING EVENT LISTENERS (PRESERVED) ---
+    // Scroll behavior
+    window.addEventListener('scroll', this.handleScroll.bind(this));
+
+    // Close mobile menu on resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && this.isOpen) {
+            this.closeMobileMenu();
+        }
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', this.handleAnchorClick.bind(this));
+    });
+}
+
 
     toggleMobileMenu() {
         this.isOpen = !this.isOpen;
