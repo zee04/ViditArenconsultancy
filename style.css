@@ -1134,7 +1134,7 @@ h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
 
 /* --- About Page --- */
 .about-section::before {
-  background-image: url('images/panback.jpg');
+  background-image: url('images/forkback.jpg');
 }
 
 /* --- Services Page --- */
@@ -1142,14 +1142,24 @@ h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
   background-image: url('images/back1.png'); /* CHANGE THIS */
 }
 
-/* --- Work & Media Pages --- */
-.projects-section::before {
+/* --- Work Page: Past Projects --- */
+#past-projects.projects-section::before {
   background-image: url('images/back2.png'); /* CHANGE THIS */
 }
 
+/* --- Work Page: Ongoing Projects --- */
+#ongoing-projects.projects-section::before {
+  background-image: url('images/back3.png'); /* CHANGE THIS */
+}
+
+/* --- Media Page --- */
+/* This now ONLY targets the Media page since the Work sections have more specific rules */
+.projects-section::before {
+  background-image: url('images/souffleback.jpg'); /* CHANGE THIS */
+}
 /* --- Contact Page --- */
 .contact-section::before {
-  background-image: url('images/back3.png'); /* CHANGE THIS */
+  background-image: url('images/jarback.jpg'); /* CHANGE THIS */
 }
 
 
