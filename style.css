@@ -984,6 +984,54 @@ h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
   height: 100%;
   z-index: 1; /* Places it in the back */
 
+  /* =================================================================
+   PAGE BACKGROUND IMAGE EFFECT
+   ================================================================= */
+
+/* 1. The main reusable class for the effect */
+.has-bg-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Places the image behind the content */
+  background-size: cover;
+  background-position: center;
+  
+  /* The monochrome, blurred effect */
+  filter: grayscale(100%) blur(5px) brightness(0.5);
+  opacity: 0.4;
+}
+
+/* 2. Set the specific image for each page's section */
+/* --- About Page --- */
+.about-section.has-bg-image::before {
+  background-image: url('images/panback.JPG '); 
+}
+
+/* --- Services Page --- */
+.services-section.has-bg-image::before {
+  background-image: url('path/to/your/images/services-image.jpg'); 
+}
+
+/* --- Our Work Page --- */
+.work-section.has-bg-image::before {
+  background-image: url('path/to/your/images/our-work-image.jpg'); 
+}
+
+/* --- Media Page --- */
+.media-section.has-bg-image::before {
+  background-image: url('path/to/your/images/media-image.jpg'); 
+}
+
+/* --- Contact Page --- */
+.contact-section.has-bg-image::before {
+  background-image: url('path/to/your/images/contact-image.jpg'); 
+}
+
+
   /* --- YOUR IMAGE GOES HERE --- */
   background-image: url('images/heroback.JPG'); 
   background-size: cover;
