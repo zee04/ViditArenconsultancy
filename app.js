@@ -71,9 +71,7 @@ class Navigation {
         this.handleScroll();
     }
 
-    bindEvents() {
-        // Mobile menu toggle
-        this.mobileToggle.addEventListener('click', this.toggleMobileMenu.bind(this));
+
 
    // The new, corrected bindEvents() method
 bindEvents() {
