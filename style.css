@@ -533,6 +533,19 @@ select.form-control {
   margin-bottom: var(--space-16);
 }
 
+/* This styles the main select box itself */
+.form-group select {
+  background-color: var(--color-charcoal-primary);
+  color: var(--color-warm-white);
+  border: 1px solid var(--color-glass-border);
+}
+
+/* This styles the individual options inside the dropdown */
+.form-group option {
+  background: var(--color-charcoal-secondary); /* Dark background for options */
+  color: var(--color-warm-white); /* Light text for options */
+}
+
 /* Card component */
 .card {
   background-color: var(--color-surface);
