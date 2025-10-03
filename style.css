@@ -1400,6 +1400,11 @@ h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
   font-size: var(--font-size-lg);
 }
 
+/* This targets the buttons inside the contact details card */
+.contact-details .btn--fullwidth {
+  margin-bottom: 24px; /* Adds space after each button */
+}
+
 .whatsapp-link {
   color: var(--color-gold-accent);
   border-color: var(--color-gold-accent);
