@@ -984,52 +984,7 @@ h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
   height: 100%;
   z-index: 1; /* Places it in the back */
 
-  /* =================================================================
-   PAGE BACKGROUND IMAGE EFFECT
-   ================================================================= */
-
-/* 1. The main reusable class for the effect */
-.has-bg-image::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; /* Places the image behind the content */
-  background-size: cover;
-  background-position: center;
-  
-  /* The monochrome, blurred effect */
-  filter: grayscale(100%) blur(5px) brightness(0.5);
-  opacity: 0.4;
-}
-
-/* 2. Set the specific image for each page's section */
-/* --- About Page --- */
-.about-section.has-bg-image::before {
-  background-image: url('images/panback.jpg'); 
-}
-
-/* --- Services Page --- */
-.services-section.has-bg-image::before {
-  background-image: url('images/panback.jpg'); 
-}
-
-/* --- Our Work Page --- */
-.work-section.has-bg-image::before {
-  background-image: url('images/panback.jpg'); 
-}
-
-/* --- Media Page --- */
-.media-section.has-bg-image::before {
-  background-image: url('images/panback.jpg'); 
-}
-
-/* --- Contact Page --- */
-.contact-section.has-bg-image::before {
-  background-image: url('images/panback.jpg'); 
-}
+ 
 
 
   /* --- YOUR IMAGE GOES HERE --- */
@@ -1124,40 +1079,79 @@ h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
 }
 
 /* ======================================================= */
-/*             MODIFIED ABOUT PREVIEW SECTION              */
+/*       REUSABLE BLURRED BACKGROUND SECTION (THE FIX)     */
 /* ======================================================= */
 
-/* --- Main container for the About Preview --- */
-.about-preview {
-  padding: var(--space-32) var(--space-24);
-  position: relative; /* Essential for the layering */
+/* --- Main Container Styling for ALL relevant sections --- */
+.about-preview,
+.about-section,
+.services-section,
+.projects-section,
+.contact-section {
+  position: relative; /* Essential for layering */
   overflow: hidden;   /* Keeps the blur effect contained */
-  /* We remove the solid background color here to let the image show through */
+  padding: 100px var(--space-24); /* Consistent spacing */
 }
 
-.about-preview::before {
+/* --- This creates the background image layer itself --- */
+.about-preview::before,
+.about-section::before,
+.services-section::before,
+.projects-section::before,
+.contact-section::before {
   content: '';
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  z-index: 1;
-
-  background-image: url('images/heroback3.PNG'); /* The new, shorter crop */
+  z-index: 1; /* Places the image behind the content */
   
-  /* --- THIS IS THE FIX FOR THE ZOOM --- */
-  background-size: cover;      /* This will now work correctly because the image is the right size */
-  background-position: center; /* This ensures it's centered nicely */
-  background-repeat: no-repeat;  /* Prevents the image from tiling if it's too small */
-
-  /* --- Use the exact same filter and opacity --- */
+  background-size: cover;
+  background-position: center;
+  
+  /* The exact visual effect from your code */
   filter: grayscale(100%) blur(5px) brightness(0.5);
   opacity: 0.4;
 }
-/* --- This keeps your glass card and text on top --- */
-.about-preview .container {
+
+/* --- This keeps the main content (like glass cards) on top --- */
+.about-preview .container,
+.about-section .container,
+.services-section .container,
+.projects-section .container,
+.contact-section .container {
     position: relative;
     z-index: 2;
 }
+
+/* ======================================================= */
+/*              ASSIGN UNIQUE BACKGROUND IMAGES            */
+/* ======================================================= */
+
+/* --- Homepage 'About' Preview --- */
+.about-preview::before {
+  background-image: url('images/heroback3.PNG');
+}
+
+/* --- About Page --- */
+.about-section::before {
+  background-image: url('images/panback.jpg');
+}
+
+/* --- Services Page --- */
+.services-section::before {
+  background-image: url('images/back1.png'); /* CHANGE THIS */
+}
+
+/* --- Work & Media Pages --- */
+.projects-section::before {
+  background-image: url('images/back2.png'); /* CHANGE THIS */
+}
+
+/* --- Contact Page --- */
+.contact-section::before {
+  background-image: url('images/back3.png'); /* CHANGE THIS */
+}
+
 
 /* --- Your original styles for the content remain the same --- */
 .about-preview .glass-card {
