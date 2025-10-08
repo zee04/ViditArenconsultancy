@@ -976,28 +976,21 @@ background: var(--color-background);
   transition: all var(--duration-fast) var(--ease-standard);
 }
 
-/* ======================================================= */
-/*                 MODIFIED HERO SECTION                   */
-/* ======================================================= */
-
 /* ============================================= */
 /* === FINAL, CLEAN HERO SECTION & SLIDESHOW === */
 /* ============================================= */
 
-/* 1. The Main Hero Container */
 .hero-section {
     position: relative;
     height: 100vh;
     width: 100%;
     overflow: hidden;
-    color: #FFFFFF;
-    /* This uses Flexbox to push the content to the bottom */
+    color: white;
     display: flex;
     justify-content: center;
     align-items: flex-end;
 }
 
-/* 2. The Slideshow & Dark Overlay */
 .slideshow-container {
     position: absolute;
     top: 0;
@@ -1014,47 +1007,34 @@ background: var(--color-background);
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4); /* The dark filter */
-    z-index: 2; /* Sits on top of images */
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 2;
 }
 
 .slide {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out;
-    z-index: 1; /* Sits behind the overlay */
+    /* JS will handle positioning and transitions */
 }
 
-.slide.active {
-    opacity: 1;
-}
-
-/* 3. The Professional Arrows */
 .slideshow-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 3; /* On top of the dark overlay */
-    background-color: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    z-index: 3;
+    background-color: rgba(0, 0, 0, 0.2);
     color: white;
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 24px;
     transition: background-color 0.3s ease;
 }
 
 .slideshow-arrow:hover {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .slideshow-arrow.prev {
@@ -1065,24 +1045,28 @@ background: var(--color-background);
     right: 40px;
 }
 
-/* 4. The Visible, Low-Centered Text */
 .hero-content-container {
     position: relative;
-    z-index: 3; /* On top of the dark overlay */
+    z-index: 3;
     text-align: center;
     max-width: 800px;
-    /* This padding pushes the content up from the bottom edge */
     padding: 0 20px 10vh;
 }
 
-.hero-content-container p {
-    color: #FFFFFF;
-    font-weight: 700; /* Bold text */
-    font-size: 1.2rem;
-    line-height: 1.6;
-    text-shadow: 0 1px 5px rgba(0,0,0,0.7);
-    margin: 0 0 30px 0;
+.hero-content-container .hero-subtitle {
+    color: white;
+    font-size: 1.25rem;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.5);
 }
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
 
 /* 5. The Buttons */
 .hero-buttons {
