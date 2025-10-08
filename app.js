@@ -221,6 +221,7 @@ class FlippingCoverFlow {
         });
 
         this.carousel.addEventListener('click', (e) => {
+             e.stopPropagation(); // Stop the click from bubbling up to the overlay!
             const card = e.target.closest('.logo-card');
             if (card && parseInt(card.dataset.index) === this.currentIndex) {
                 this.showFlipModal(this.currentIndex);
