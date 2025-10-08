@@ -99,84 +99,127 @@ class SmoothSlideshow {
     }
 }
 
-// =============================================
-// === FINAL 3D FLIPPING CARD CAROUSEL (FIXED) ===
-// =============================================
-class FlippingCarousel {
-    constructor(carouselSelector) {
-        this.carousel = document.querySelector(carouselSelector);
-        if (!this.carousel) return;
+// ==========================================================
+// === CLEAN COVER-FLOW WITH FLIP-MODAL (FINAL & FIXED)   ===
+// ==========================================================
+class FlippingCoverFlow {
+    constructor(containerSelector) {
+        this.container = document.querySelector(containerSelector);
+        if (!this.container) return;
 
-        this.flipperCards = this.carousel.querySelectorAll('.carousel-card-flipper');
-        this.prevButton = document.querySelector('.carousel-arrow.prev');
-        this.nextButton = document.querySelector('.carousel-arrow.next');
-        
-        this.totalItems = this.flipperCards.length;
-        if (this.totalItems === 0) return;
+        this.carousel = this.container.querySelector('.logo-carousel');
+        this.prevButton = this.container.querySelector('.carousel-arrow.prev');
+        this.nextButton = this.container.querySelector('.carousel-arrow.next');
+
+        // The Flip Modal Elements
+        this.flipContainer = document.querySelector('.project-flip-container');
+        this.flipContent = this.flipContainer.querySelector('.flip-back');
+        this.closeButton = this.flipContainer.querySelector('.modal-close-btn');
+
+        this.projects = [
+            { title: 'VANTARA NIWAS - MACHAAN Launch', type: '', description: "Launched the MACHAAN restaurant inside Vantara Niwas, a seven-star hotel owned by Anant Ambani, hosting an exclusive dinner for Mr. Ambani and other special guests.", logo: 'images/project-images/vantara.png' },
+            { title: 'Little Food Co.', type: 'Culinary Consultancy', description: "Enhanced catering and delivery for this premier Mumbai brand, servicing clients like Spotify and Nykaa by elevating dishes, optimizing workflows, and implementing data tracking.", logo: 'images/project-images/little foods.png' },
+            { title: 'META - WhatsApp Privacy Ad Film', type: '', description: 'Provided comprehensive food styling and kitchen design consultation for the ad film, ensuring authentic culinary scene portrayal.', logo: 'images/project-images/whatsapp.png' },
+            { title: 'Moonshine', type: 'Brand Positioning & Strategy', description: "Developed the brand identity and 'Be Better' tagline, creating a social media strategy focused on sustainability for this unique mead brand.", logo: 'images/project-images/moonshine.png' },
+            { title: 'VIRAASAT - Aaverina Hospitality', type: 'Contemporary Indian Restaurant', description: 'Collaborated on a 300-seat restaurant in Mysore focusing on Northern Frontier Cuisine, blending traditional flavors with modern techniques.', logo: 'images/project-images/virasata.png' },
+            { title: 'Basque by Breve', type: 'Concept Development', description: 'Developed a concept café in Bandra inspired by St. Sebastian cheesecake, featuring unique varieties and a gourmet sandwich shop.', logo: 'images/project-images/basque.png' },
+            { title: 'Phat Fillings', type: 'Premium Pie Delivery', description: 'Led the creation of a premium delivery brand for pies with Indian and Australian flavors, featured in Vogue and Upper Crust.', logo: 'images/project-images/phat logo.png' },
+            { title: 'ZEKI', type: 'Upscale Casual Bistro', description: 'Developed an upscale bistro in Andheri West focused on global cuisine, designing the kitchen, curating crockery, and crafting an international menu.', logo: 'images/project-images/zeki.png' },
+            { title: 'Doppler', type: '', description: "Conceptualized a café for Boomerang Hospitality in a historic Jaipur haveli, redefining the experience as the city's premier slow bar destination.", logo: 'images/project-images/doppler.png' },
+            { title: 'Sarabi', type: 'Modern Indian Restaurant', description: "An upscale 12,000 sqft space offering contemporary progressive Indian food, designed for a discerning clientele.", logo: 'images/project-images/saarbai.png' },
+            { title: 'Sunny Da Dhaba', type: '', description: 'Evolved a 30+ year legacy brand into a dual-floor destination with a Mediterranean café and a modern-Indian restaurant with playful tapas.', logo: 'images/project-images/sunnyy.png' }
+        ];
 
         this.currentIndex = 0;
-        this.angle = 360 / this.totalItems;
-        
         this.init();
     }
 
     init() {
-        this.arrangeCarousel();
+        this.populateCarousel();
+        this.cards = this.carousel.querySelectorAll('.logo-card');
+        this.updateCarouselPositions();
         this.bindEvents();
     }
 
-    arrangeCarousel() {
-        // Rotate the entire carousel ring
-        const rotationAngle = -this.currentIndex * this.angle;
-        this.carousel.style.transform = `rotateY(${rotationAngle}deg)`;
+    populateCarousel() {
+        this.carousel.innerHTML = this.projects.map((project, index) => `
+            <div class="logo-card" data-index="${index}">
+                <img src="${project.logo}" alt="${project.title}">
+            </div>
+        `).join('');
+    }
 
-        // Position each card in the 3D circle
-        const tz = Math.round((this.carousel.offsetWidth / 2) / Math.tan(Math.PI / this.totalItems));
-        
-        this.flipperCards.forEach((flipper, index) => {
-            const itemAngle = index * this.angle;
-            flipper.style.transform = `rotateY(${itemAngle}deg) translateZ(${tz}px)`;
+    updateCarouselPositions() {
+        this.cards.forEach((card, index) => {
+            const offset = index - this.currentIndex;
+            let transform = '';
+            let zIndex = 0;
+            let filter = 'blur(5px) grayscale(1)';
+            let opacity = 0.4;
 
-            const isActive = index === this.currentIndex;
-            const card = flipper.querySelector('.carousel-card');
-
-            // Apply visual styles to active vs. inactive cards
-            card.style.filter = isActive ? 'none' : 'blur(4px) grayscale(50%)';
-            card.style.opacity = isActive ? '1' : '0.4';
+            if (offset === 0) { // Center card
+                transform = 'translateX(0) scale(1)';
+                zIndex = 10;
+                filter = 'none';
+                opacity = 1;
+            } else if (offset === 1) { // Right card
+                transform = 'translateX(150px) scale(0.7)';
+                zIndex = 5;
+            } else if (offset === -1) { // Left card
+                transform = 'translateX(-150px) scale(0.7)';
+                zIndex = 5;
+            } else { // Hidden cards
+                transform = `translateX(${offset * 150}px) scale(0.5)`;
+                opacity = 0;
+            }
             
-            // Only the active card is clickable
-            flipper.style.pointerEvents = isActive ? 'auto' : 'none';
+            card.style.transform = transform;
+            card.style.zIndex = zIndex;
+            card.style.filter = filter;
+            card.style.opacity = opacity;
         });
+    }
+
+    showFlipModal(index) {
+        const project = this.projects[index];
+        this.flipContent.innerHTML = `
+            <button class="modal-close-btn">&times;</button>
+            <h3>${project.title}</h3>
+            ${project.type ? `<p class="project-type">${project.type}</p>` : ''}
+            <p>${project.description}</p>
+        `;
+        this.flipContainer.classList.add('active');
+        // Re-bind the close button event since we just created it
+        this.flipContainer.querySelector('.modal-close-btn').addEventListener('click', () => this.hideFlipModal());
+    }
+
+    hideFlipModal() {
+        this.flipContainer.classList.remove('active');
     }
 
     bindEvents() {
         this.nextButton.addEventListener('click', () => {
-            this.unflipCurrentCard();
-            this.currentIndex++;
-            this.arrangeCarousel();
+            this.currentIndex = (this.currentIndex + 1) % this.projects.length;
+            this.updateCarouselPositions();
         });
 
         this.prevButton.addEventListener('click', () => {
-            this.unflipCurrentCard();
-            this.currentIndex--;
-            this.arrangeCarousel();
+            this.currentIndex = (this.currentIndex - 1 + this.projects.length) % this.projects.length;
+            this.updateCarouselPositions();
         });
 
-        this.flipperCards.forEach((flipper, index) => {
-            flipper.addEventListener('click', (e) => {
-                // Only allow flipping the active card
-                if (index === this.currentIndex) {
-                    flipper.classList.toggle('flipped');
-                }
-            });
+        this.carousel.addEventListener('click', (e) => {
+            const card = e.target.closest('.logo-card');
+            if (card && parseInt(card.dataset.index) === this.currentIndex) {
+                this.showFlipModal(this.currentIndex);
+            }
         });
-    }
-
-    unflipCurrentCard() {
-        const currentFlipper = this.flipperCards[this.currentIndex];
-        if (currentFlipper && currentFlipper.classList.contains('flipped')) {
-            currentFlipper.classList.remove('flipped');
-        }
+        
+        this.flipContainer.addEventListener('click', (e) => {
+            if (e.target === this.flipContainer) { // Click on overlay
+                this.hideFlipModal();
+            }
+        });
     }
 }
 
@@ -643,7 +686,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize all components
     const heroSlideshow = new SmoothSlideshow('.slide'); // <-- ADD THIS LINE
     heroSlideshow.init(); // Initialize the slideshow
-    const projectCarousel = new FlippingCarousel('.project-carousel');
+   const coverFlow = new FlippingCoverFlow('.logo-carousel-container');
     const navigation = new Navigation();
     const animationObserver = new AnimationObserver();
     const formHandler = new FormHandler();
