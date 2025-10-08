@@ -980,30 +980,33 @@ background: var(--color-background);
 /*                 MODIFIED HERO SECTION                   */
 /* ======================================================= */
 
-/* --- Main Hero Section Container --- */
+/* ============================================= */
+/* === FINAL, CLEAN HERO SECTION & SLIDESHOW === */
+/* ============================================= */
+
+/* 1. The Main Hero Container */
 .hero-section {
     position: relative;
     height: 100vh;
     width: 100%;
     overflow: hidden;
-    /* This uses Flexbox to achieve the LOW-CENTER position you want */
-    display: flex;
-    justify-content: center; /* Horizontally center */
-    align-items: flex-end;   /* Vertically align to the bottom */
     color: #FFFFFF;
+    /* This uses Flexbox to push the content to the bottom */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
 }
 
-/* REPLACES your old .slideshow-container and the blurry .hero-section::before */
+/* 2. The Slideshow & Dark Overlay */
 .slideshow-container {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1; /* Sits in the background */
+    z-index: 1;
 }
 
-/* This creates the clean, dark filter you wanted */
 .slideshow-container::after {
     content: '';
     position: absolute;
@@ -1011,28 +1014,26 @@ background: var(--color-background);
     left: 0;
     width: 100%;
     height: 100%;
-    /* No blur, just a clean, semi-transparent black overlay */
-    background-color: rgba(0, 0, 0, 0.4); 
-    z-index: 2;
+    background: rgba(0, 0, 0, 0.4); /* The dark filter */
+    z-index: 2; /* Sits on top of images */
 }
 
-/* These rules make the slideshow fade smoothly */
 .slide {
     position: absolute;
     width: 100%;
     height: 100%;
     background-size: cover;
     background-position: center;
-    opacity: 0; /* All slides are invisible by default */
-    transition: opacity 1.5s ease-in-out; /* The fade animation */
-    z-index: 1;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    z-index: 1; /* Sits behind the overlay */
 }
 
 .slide.active {
-    opacity: 1; /* The active slide becomes visible */
+    opacity: 1;
 }
 
-/* REPLACES your old, clunky .prev and .next styles at the bottom of the file */
+/* 3. The Professional Arrows */
 .slideshow-arrow {
     position: absolute;
     top: 50%;
@@ -1041,9 +1042,9 @@ background: var(--color-background);
     background-color: rgba(255, 255, 255, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.3);
     color: white;
-    width: 45px;   /* Small and professional */
+    width: 45px;
     height: 45px;
-    border-radius: 50%; /* Perfectly circular */
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1052,37 +1053,77 @@ background: var(--color-background);
     transition: background-color 0.3s ease;
 }
 
+.slideshow-arrow:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
 .slideshow-arrow.prev {
-    left: 40px; /* Pushed to the far left edge */
+    left: 40px;
 }
 
 .slideshow-arrow.next {
-    right: 40px; /* Pushed to the far right edge */
+    right: 40px;
 }
 
-/* REPLACES your old .hero-content and .hero-title */
+/* 4. The Visible, Low-Centered Text */
 .hero-content-container {
     position: relative;
-    z-index: 3; /* On top of everything */
+    z-index: 3; /* On top of the dark overlay */
     text-align: center;
     max-width: 800px;
-    /* The padding pushes it up from the bottom edge, creating the low-center position */
-    padding: 0 20px 10vh; 
+    /* This padding pushes the content up from the bottom edge */
+    padding: 0 20px 10vh;
 }
 
 .hero-content-container p {
-    font-size: 1.1rem;
-    font-weight: 400; /* This is for the main text */
-    line-height: 1.7;
+    color: #FFFFFF;
+    font-weight: 700; /* Bold text */
+    font-size: 1.2rem;
+    line-height: 1.6;
+    text-shadow: 0 1px 5px rgba(0,0,0,0.7);
     margin: 0 0 30px 0;
-    text-shadow: 0 1px 5px rgba(0,0,0,0.5); /* Helps text stand out */
 }
 
-/* Styles the buttons for the new design */
+/* 5. The Buttons */
 .hero-buttons {
     display: flex;
     justify-content: center;
     gap: 15px;
+}
+
+/* The buttons will inherit from your existing .btn styles,
+   but we ensure they are specifically styled for the hero section */
+.hero-buttons .btn {
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+.hero-buttons .btn-primary {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+.hero-buttons .btn-primary:hover {
+    background-color: transparent;
+    border-color: #FFFFFF;
+    color: #FFFFFF;
+}
+
+.hero-buttons .btn-secondary {
+    background-color: transparent;
+    border: 2px solid #FFFFFF;
+    color: #FFFFFF;
+}
+
+.hero-buttons .btn-secondary:hover {
+    background-color: #FFFFFF;
+    color: #000000;
 }
 
 
@@ -1768,51 +1809,7 @@ a.btn.btn--secondary:focus {
   text-decoration: underline;
 }
 
-/* ======================================================= */
-/* === HERO SECTION VISIBILITY & POSITIONING OVERRIDE === */
-/* ======================================================= */
 
-/* This forces the hero section to be a flex container for positioning */
-.hero-section {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: flex-end !important;
-}
-
-/* This forces the text container to be visible and correctly positioned */
-.hero-content-container {
-    position: relative !important;
-    z-index: 3 !important; /* Ensures it is on top of the slideshow overlay */
-    display: block !important; /* Make sure it's not hidden */
-    text-align: center !important;
-    padding: 0 20px 10vh !important; /* Creates the "low-center" position */
-    max-width: 800px;
-    width: 100%;
-}
-
-/* This forces the paragraph text to be visible, white, and bold */
-.hero-content-container p {
-    color: #FFFFFF !important; /* WHITE TEXT */
-    font-weight: 700 !important; /* BOLD TEXT */
-    font-size: 1.2rem !important;
-    line-height: 1.6 !important;
-    text-shadow: 0 1px 5px rgba(0,0,0,0.7) !important; /* Adds shadow for readability */
-    margin: 0 0 30px 0 !important;
-}
-
-/* This forces the buttons to be visible and centered */
-.hero-buttons {
-    display: flex !important;
-    justify-content: center !important;
-    gap: 15px !important;
-}
-
-/* This rule will hide any old, unwanted h1 or h2 titles in the hero */
-.hero-section .hero-title,
-.hero-section h1,
-.hero-section h2 {
-    display: none !important;
-}
 
 
 
