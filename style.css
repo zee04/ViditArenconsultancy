@@ -1003,7 +1003,7 @@ background: var(--color-background);
   z-index: 1; /* Places it in the back */
 
   /* --- YOUR IMAGE GOES HERE --- */
-  background-image: url('images/heroback.JPG'); 
+  background-image: url('images/cornback.JPG'); 
   background-size: cover;
   background-position: center;
  /** background-attachment: fixed; /* Parallax effect */
