@@ -1012,7 +1012,21 @@ background: var(--color-background);
 }
 
 .slide {
-    /* JS will handle positioning and transitions */
+    /* THIS IS THE FIX */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* These are from the JS, but having them here helps */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
 }
 
 .slideshow-arrow {
