@@ -755,7 +755,7 @@ select.form-control {
 :root {
 /* Custom Color Palette */
 --color-background: #F5F5DC;
---color-primary: #50A3AB;
+--color-primary: #232323;
 --color-text-dark: #232323;
 --color-border-accent: #7CBAC1; /* Lighter blue for hover */
 --color-white: #FFFFFF;
@@ -801,7 +801,7 @@ body {
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 750;
  color: var(--color-primary);
   letter-spacing: -0.02em;
 }
