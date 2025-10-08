@@ -220,8 +220,12 @@ class FlippingCoverFlow {
             this.updateCarouselPositions();
         });
 
-        this.carousel.addEventListener('click', (e) => {
-             e.stopPropagation(); // Stop the click from bubbling up to the overlay!
+      this.carousel.addEventListener('click', (e) => {
+            // ===========================================
+            // === THE DEFINITIVE FIX IS THIS ONE LINE ===
+            // ===========================================
+            e.stopPropagation(); 
+            
             const card = e.target.closest('.logo-card');
             if (card && parseInt(card.dataset.index) === this.currentIndex) {
                 this.showFlipModal(this.currentIndex);
