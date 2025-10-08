@@ -1,3 +1,97 @@
+// ADD THIS NEW CLASS TO THE TOP OF APP.JS
+class SmoothSlideshow {
+    constructor(selector = '.slide', options = {}) {
+        this.slides = document.querySelectorAll(selector);
+        if (this.slides.length === 0) return;
+
+        this.options = {
+            interval: 5000,
+            fadeDuration: 1500,
+            ...options
+        };
+
+        this.currentIndex = 0;
+        this.init();
+    }
+
+    init() {
+        this.setupSlides();
+        this.startAutoplay();
+        this.bindEvents();
+    }
+
+    setupSlides() {
+        this.slides.forEach((slide, index) => {
+            slide.style.position = 'absolute';
+            slide.style.top = '0';
+            slide.style.left = '0';
+            slide.style.width = '100%';
+            slide.style.height = '100%';
+            slide.style.opacity = index === 0 ? '1' : '0';
+            slide.style.zIndex = index === 0 ? '1' : '0';
+            slide.style.transition = `opacity ${this.options.fadeDuration}ms ease-in-out`;
+        });
+    }
+
+    showSlide(index) {
+        if (index === this.currentIndex) return;
+
+        const currentSlide = this.slides[this.currentIndex];
+        const nextSlide = this.slides[index];
+
+        nextSlide.style.zIndex = '1';
+        nextSlide.style.opacity = '1';
+
+        currentSlide.style.zIndex = '0';
+        // We don't need a timeout, CSS transition handles the fade-out
+        
+        this.currentIndex = index;
+    }
+
+    next() {
+        const nextIndex = (this.currentIndex + 1) % this.slides.length;
+        this.showSlide(nextIndex);
+    }
+
+    prev() {
+        const prevIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
+        this.showSlide(prevIndex);
+    }
+
+    startAutoplay() {
+        this.stopAutoplay();
+        this.autoplayTimer = setInterval(() => this.next(), this.options.interval);
+    }
+
+    stopAutoplay() {
+        if (this.autoplayTimer) {
+            clearInterval(this.autoplayTimer);
+        }
+    }
+
+    bindEvents() {
+        const prevButton = document.querySelector('.prev');
+        const nextButton = document.querySelector('.next');
+
+        if (prevButton) {
+            prevButton.addEventListener('click', () => {
+                this.prev();
+                this.startAutoplay();
+            });
+        }
+
+        if (nextButton) {
+            nextButton.addEventListener('click', () => {
+                this.next();
+                this.startAutoplay();
+            });
+        }
+    }
+}
+
+
+
+
 // Smooth scrolling and momentum effects
 class SmoothScroll {
     constructor() {
@@ -457,6 +551,7 @@ const Utils = {
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize all components
+    const heroSlideshow = new SmoothSlideshow('.slide'); // <-- ADD THIS LINE
     const navigation = new Navigation();
     const animationObserver = new AnimationObserver();
     const formHandler = new FormHandler();
@@ -568,40 +663,5 @@ messageStyles.textContent = `
 document.head.appendChild(messageStyles);
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-    const prev = document.querySelector('.prev');
-    const next = document.querySelector('.next');
-    const slideInterval = 5000; // 5 seconds per slide
 
-    function showSlide(index) {
-        slides.forEach((slide, i) => {
-            slide.classList.remove('active');
-            if (i === index) {
-                slide.classList.add('active');
-            }
-        });
-    }
-
-    function nextSlide() {
-        currentSlide = (currentSlide + 1) % slides.length;
-        showSlide(currentSlide);
-    }
-
-    function prevSlide() {
-        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-        showSlide(currentSlide);
-    }
-
-    if (slides.length > 0) {
-        showSlide(0); // Show the first slide initially
-        setInterval(nextSlide, slideInterval); // Auto-play the slideshow
-
-        if(prev && next){
-            prev.addEventListener('click', prevSlide);
-            next.addEventListener('click', nextSlide);
-        }
-    }
-});
 
