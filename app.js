@@ -70,26 +70,28 @@ class SmoothSlideshow {
     }
 
     bindEvents() {
-        const prevButton = document.querySelector('.prev');
-        const nextButton = document.querySelector('.next');
+    // Correctly select the arrows using their full, specific classes
+    const prevButton = document.querySelector('.slideshow-arrow.prev');
+    const nextButton = document.querySelector('.slideshow-arrow.next');
 
-        if (prevButton) {
-            prevButton.addEventListener('click', () => {
-                this.prev();
-                this.startAutoplay();
-            });
-        }
+    if (prevButton) {
+        prevButton.addEventListener('click', () => {
+            this.prev();
+            // It's good practice to restart the autoplay timer after a manual click
+            this.startAutoplay();
+        });
+    }
 
-        if (nextButton) {
-            nextButton.addEventListener('click', () => {
-                this.next();
-                this.startAutoplay();
-            });
-        }
+    if (nextButton) {
+        nextButton.addEventListener('click', () => {
+            this.next();
+            // Restart the autoplay timer here as well
+            this.startAutoplay();
+        });
     }
 }
 
-
+}
 
 
 // Smooth scrolling and momentum effects
