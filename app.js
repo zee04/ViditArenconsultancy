@@ -99,9 +99,9 @@ class SmoothSlideshow {
     }
 }
 
-// ==========================================================
-// === CLEAN COVER-FLOW WITH FLIP-MODAL (FINAL & FIXED)   ===
-// ==========================================================
+// ===============================================================
+// === FINAL CAROUSEL CLASS - WITH LOOPING & ALL FIXES         ===
+// ===============================================================
 class FlippingCoverFlow {
     constructor(containerSelector) {
         this.container = document.querySelector(containerSelector);
@@ -110,11 +110,8 @@ class FlippingCoverFlow {
         this.carousel = this.container.querySelector('.logo-carousel');
         this.prevButton = this.container.querySelector('.carousel-arrow.prev');
         this.nextButton = this.container.querySelector('.carousel-arrow.next');
-
-        // The Flip Modal Elements
         this.flipContainer = document.querySelector('.project-flip-container');
         this.flipContent = this.flipContainer.querySelector('.flip-back');
-        this.closeButton = this.flipContainer.querySelector('.modal-close-btn');
 
         this.projects = [
             { title: 'VANTARA NIWAS - MACHAAN Launch', type: '', description: "Launched the MACHAAN restaurant inside Vantara Niwas, a seven-star hotel owned by Anant Ambani, hosting an exclusive dinner for Mr. Ambani and other special guests.", logo: 'images/project-images/vantara.png' },
@@ -137,7 +134,7 @@ class FlippingCoverFlow {
     init() {
         this.populateCarousel();
         this.cards = this.carousel.querySelectorAll('.logo-card');
-        this.updateCarouselPositions();
+        this.updateCarouselPositions(true); // Initial setup without transition
         this.bindEvents();
     }
 
@@ -149,37 +146,53 @@ class FlippingCoverFlow {
         `).join('');
     }
 
-    updateCarouselPositions() {
-        this.cards.forEach((card, index) => {
-            const offset = index - this.currentIndex;
-            let transform = '';
-            let zIndex = 0;
-            let filter = 'blur(5px) grayscale(1)';
-            let opacity = 0.4;
+    updateCarouselPositions(isInitial = false) {
+        const total = this.projects.length;
 
-            if (offset === 0) { // Center card
+        // Loop through all cards to set their position
+        for (let i = 0; i < total; i++) {
+            const card = this.cards[i];
+            const offset = i - this.currentIndex;
+
+            let transform, zIndex, filter, opacity;
+
+            // This creates the circular distance for the loop
+            const circularOffset = (offset + total) % total;
+            const rightOffset = (this.currentIndex - i + total) % total;
+            const distance = Math.min(circularOffset, rightOffset);
+            
+            // Disable transition for the very first load
+            if (isInitial) card.style.transition = 'none';
+            else card.style.transition = 'transform 0.5s ease, opacity 0.5s ease, filter 0.5s ease';
+
+            if (distance === 0) { // Center card
                 transform = 'translateX(0) scale(1)';
                 zIndex = 10;
                 filter = 'none';
                 opacity = 1;
-            } else if (offset === 1) { // Right card
-                transform = 'translateX(150px) scale(0.7)';
+            } else if (distance === 1) { // Adjacent cards
+                // Check if it's the left or right card
+                if (circularOffset === 1 || circularOffset < total / 2 && circularOffset !== 0) {
+                    transform = 'translateX(150px) scale(0.7)'; // Right
+                } else {
+                    transform = 'translateX(-150px) scale(0.7)'; // Left
+                }
                 zIndex = 5;
-            } else if (offset === -1) { // Left card
-                transform = 'translateX(-150px) scale(0.7)';
-                zIndex = 5;
+                filter = 'blur(2px)';
+                opacity = 0.5;
             } else { // Hidden cards
-                transform = `translateX(${offset * 150}px) scale(0.5)`;
+                transform = `translateX(${offset * 75}px) scale(0.5)`;
                 opacity = 0;
+                zIndex = 1;
             }
-            
+
             card.style.transform = transform;
             card.style.zIndex = zIndex;
             card.style.filter = filter;
             card.style.opacity = opacity;
-        });
+        }
     }
-
+    
     showFlipModal(index) {
         const project = this.projects[index];
         this.flipContent.innerHTML = `
@@ -189,8 +202,7 @@ class FlippingCoverFlow {
             <p>${project.description}</p>
         `;
         this.flipContainer.classList.add('active');
-        // Re-bind the close button event since we just created it
-        this.flipContainer.querySelector('.modal-close-btn').addEventListener('click', () => this.hideFlipModal());
+        this.flipContainer.querySelector('.modal-close-btn').addEventListener('click', () => this.hideFlipModal(), { once: true });
     }
 
     hideFlipModal() {
@@ -216,12 +228,11 @@ class FlippingCoverFlow {
         });
         
         this.flipContainer.addEventListener('click', (e) => {
-            if (e.target === this.flipContainer) { // Click on overlay
-                this.hideFlipModal();
-            }
+            if (e.target === this.flipContainer) this.hideFlipModal();
         });
     }
 }
+
 
 
 
