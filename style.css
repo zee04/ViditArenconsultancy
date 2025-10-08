@@ -1768,6 +1768,51 @@ a.btn.btn--secondary:focus {
   text-decoration: underline;
 }
 
+/* ======================================================= */
+/* === HERO SECTION VISIBILITY & POSITIONING OVERRIDE === */
+/* ======================================================= */
+
+/* This forces the hero section to be a flex container for positioning */
+.hero-section {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-end !important;
+}
+
+/* This forces the text container to be visible and correctly positioned */
+.hero-content-container {
+    position: relative !important;
+    z-index: 3 !important; /* Ensures it is on top of the slideshow overlay */
+    display: block !important; /* Make sure it's not hidden */
+    text-align: center !important;
+    padding: 0 20px 10vh !important; /* Creates the "low-center" position */
+    max-width: 800px;
+    width: 100%;
+}
+
+/* This forces the paragraph text to be visible, white, and bold */
+.hero-content-container p {
+    color: #FFFFFF !important; /* WHITE TEXT */
+    font-weight: 700 !important; /* BOLD TEXT */
+    font-size: 1.2rem !important;
+    line-height: 1.6 !important;
+    text-shadow: 0 1px 5px rgba(0,0,0,0.7) !important; /* Adds shadow for readability */
+    margin: 0 0 30px 0 !important;
+}
+
+/* This forces the buttons to be visible and centered */
+.hero-buttons {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 15px !important;
+}
+
+/* This rule will hide any old, unwanted h1 or h2 titles in the hero */
+.hero-section .hero-title,
+.hero-section h1,
+.hero-section h2 {
+    display: none !important;
+}
 
 
 
