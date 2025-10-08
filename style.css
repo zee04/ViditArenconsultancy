@@ -989,7 +989,7 @@ background: var(--color-background);
   padding: 120px var(--space-24) var(--space-24);
   position: relative; /* This is crucial for layering */
   overflow: hidden;   /* Prevents blur from bleeding out */
-  background: var(--color-background); /* Fallback color */
+  background: transparent; /* This makes the section see-through */
 }
 
 /* --- Paxika-Style Background Image Layer --- */
@@ -1009,8 +1009,8 @@ background: var(--color-background);
  /** background-attachment: fixed; /* Parallax effect */
 
   /* --- THE BLACK & WHITE BLURRY EFFECT --- */
-  filter: none; /* Or a different filter like sepia(50%) */
-opacity: 0.1; /* Make it very faint */
+  filter: blur(5px) brightness(0.7) saturate(110%);
+  opacity: 1; /* Makes sure the effect is fully visible */
 
 }
 
