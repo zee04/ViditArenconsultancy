@@ -100,7 +100,7 @@ class SmoothSlideshow {
 }
 
 // =============================================
-// === 3D FLIPPING CARD CAROUSEL             ===
+// === FINAL 3D FLIPPING CARD CAROUSEL (FIXED) ===
 // =============================================
 class FlippingCarousel {
     constructor(carouselSelector) {
@@ -112,9 +112,10 @@ class FlippingCarousel {
         this.nextButton = document.querySelector('.carousel-arrow.next');
         
         this.totalItems = this.flipperCards.length;
+        if (this.totalItems === 0) return;
+
         this.currentIndex = 0;
         this.angle = 360 / this.totalItems;
-        this.isFlipped = false;
         
         this.init();
     }
@@ -125,21 +126,26 @@ class FlippingCarousel {
     }
 
     arrangeCarousel() {
+        // Rotate the entire carousel ring
         const rotationAngle = -this.currentIndex * this.angle;
         this.carousel.style.transform = `rotateY(${rotationAngle}deg)`;
 
-        // Arrange each card in a 3D circle
+        // Position each card in the 3D circle
         const tz = Math.round((this.carousel.offsetWidth / 2) / Math.tan(Math.PI / this.totalItems));
         
         this.flipperCards.forEach((flipper, index) => {
             const itemAngle = index * this.angle;
             flipper.style.transform = `rotateY(${itemAngle}deg) translateZ(${tz}px)`;
 
-            // Make non-active cards slightly transparent and blurred
             const isActive = index === this.currentIndex;
-            flipper.style.filter = isActive ? 'none' : 'blur(2px) grayscale(80%)';
-            flipper.style.opacity = isActive ? '1' : '0.5';
-            flipper.style.cursor = isActive ? 'pointer' : 'default';
+            const card = flipper.querySelector('.carousel-card');
+
+            // Apply visual styles to active vs. inactive cards
+            card.style.filter = isActive ? 'none' : 'blur(4px) grayscale(50%)';
+            card.style.opacity = isActive ? '1' : '0.4';
+            
+            // Only the active card is clickable
+            flipper.style.pointerEvents = isActive ? 'auto' : 'none';
         });
     }
 
@@ -156,13 +162,11 @@ class FlippingCarousel {
             this.arrangeCarousel();
         });
 
-        // Click a card to flip it
         this.flipperCards.forEach((flipper, index) => {
-            flipper.addEventListener('click', () => {
-                // Only allow flipping the active (front) card
+            flipper.addEventListener('click', (e) => {
+                // Only allow flipping the active card
                 if (index === this.currentIndex) {
                     flipper.classList.toggle('flipped');
-                    this.isFlipped = flipper.classList.contains('flipped');
                 }
             });
         });
@@ -170,12 +174,12 @@ class FlippingCarousel {
 
     unflipCurrentCard() {
         const currentFlipper = this.flipperCards[this.currentIndex];
-        if (currentFlipper) {
+        if (currentFlipper && currentFlipper.classList.contains('flipped')) {
             currentFlipper.classList.remove('flipped');
         }
-        this.isFlipped = false;
     }
 }
+
 
 
 // Smooth scrolling and momentum effects
