@@ -982,117 +982,115 @@ background: var(--color-background);
 
 /* --- Main Hero Section Container --- */
 .hero-section {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 120px var(--space-24) var(--space-24);
-  position: relative; /* This is crucial for layering */
-  overflow: hidden;   /* Prevents blur from bleeding out */
-  background: transparent; /* This makes the section see-through */
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    /* This uses Flexbox to achieve the LOW-CENTER position you want */
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: flex-end;   /* Vertically align to the bottom */
+    color: #FFFFFF;
 }
 
-/* --- Paxika-Style Background Image Layer --- */
-.hero-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1; /* Places it in the back */
-
-  /* --- YOUR IMAGE GOES HERE --- */
-  background-image: url('images/cornback.JPG'); 
-  background-size: cover;
-  background-position: center;
- /** background-attachment: fixed; /* Parallax effect */
-
-  /* --- THE BLACK & WHITE BLURRY EFFECT --- */
-  filter: blur(5px) brightness(0.7) saturate(110%);
-  opacity: 1; /* Makes sure the effect is fully visible */
-
+/* REPLACES your old .slideshow-container and the blurry .hero-section::before */
+.slideshow-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Sits in the background */
 }
 
-/* --- Hero Content Container (Stays on Top) --- */
-.hero-container {
-  max-width: 1400px;
-  width: 100%;
-  position: relative; /* Must be relative */
-  z-index: 2;         /* Keeps content above the background */
+/* This creates the clean, dark filter you wanted */
+.slideshow-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* No blur, just a clean, semi-transparent black overlay */
+    background-color: rgba(0, 0, 0, 0.4); 
+    z-index: 2;
 }
 
-/* Your other hero styles like .hero-content and .hero-image can remain unchanged */
-.hero-content {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: var(--space-32);
-  align-items: center;
+/* These rules make the slideshow fade smoothly */
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0; /* All slides are invisible by default */
+    transition: opacity 1.5s ease-in-out; /* The fade animation */
+    z-index: 1;
 }
 
-.hero-image {
-  display: flex;
-  justify-content: center;
+.slide.active {
+    opacity: 1; /* The active slide becomes visible */
 }
 
-.chef-portrait {
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--color-border-accent), var(--color-gold-light));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  animation: float 6s ease-in-out infinite;
+/* REPLACES your old, clunky .prev and .next styles at the bottom of the file */
+.slideshow-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3; /* On top of the dark overlay */
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    width: 45px;   /* Small and professional */
+    height: 45px;
+    border-radius: 50%; /* Perfectly circular */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
 }
 
-.portrait-ring {
-  width: 280px;
-  height: 280px;
-  border-radius: 50%;
-  background: var(--color-charcoal-secondary);
-  border: 3px solid var(--color-border-accent);
-  position: relative;
+.slideshow-arrow.prev {
+    left: 40px; /* Pushed to the far left edge */
 }
 
-.portrait-ring::before {
-  content: '';
-  background: url('images/vidit1.png') center/cover no-repeat;
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
+.slideshow-arrow.next {
+    right: 40px; /* Pushed to the far right edge */
 }
+
+/* REPLACES your old .hero-content and .hero-title */
+.hero-content-container {
+    position: relative;
+    z-index: 3; /* On top of everything */
+    text-align: center;
+    max-width: 800px;
+    /* The padding pushes it up from the bottom edge, creating the low-center position */
+    padding: 0 20px 10vh; 
+}
+
+.hero-content-container p {
+    font-size: 1.1rem;
+    font-weight: 400; /* This is for the main text */
+    line-height: 1.7;
+    margin: 0 0 30px 0;
+    text-shadow: 0 1px 5px rgba(0,0,0,0.5); /* Helps text stand out */
+}
+
+/* Styles the buttons for the new design */
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
 
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-20px); }
 }
 
-.hero-title {
-  margin-bottom: var(--space-24);
-  background: linear-gradient(135deg, var(--color-warm-white), var(--color-gold-light));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.hero-subtitle {
-  font-size: var(--font-size-lg);
-  margin-bottom: var(--space-32);
-  opacity: 0.9;
-  line-height: 1.7;
-}
-
-.hero-actions {
-  display: flex;
-  gap: var(--space-16);
-  align-items: center;
-}
 
 /* ======================================================= */
 /*       REUSABLE BLURRED BACKGROUND SECTION (THE FIX)     */
@@ -1423,7 +1421,7 @@ background: var(--color-background);
 
 /* Button Overrides */
 .btn {
-  font-weight: 600;
+  font-weight: 700;
   transition: all var(--duration-medium) var(--ease-bounce);
   border-radius: var(--radius-lg);
   text-transform: uppercase;
@@ -1770,98 +1768,6 @@ a.btn.btn--secondary:focus {
   text-decoration: underline;
 }
 
-/* SLIDESHOW STYLES */
-.slideshow-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-}
-
-.slide {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out;
-}
-
-.slide.active {
-    opacity: 1;
-}
-
-/* Cinematic Filter for the Slideshow Images */
-.slide::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4); /* This adds a dark tint */
-    z-index: 1;
-}
-
-/* Navigation Arrows */
-.prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    padding: 16px;
-    margin-top: -22px;
-    color: white;
-    font-weight: bold;
-    font-size: 24px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-    z-index: 3;
-}
-
-.next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-}
-
-
-.prev:hover, .next:hover {
-    background-color: rgba(0,0,0,0.8);
-}
-
-
-/* ===== HERO ARROW POSITION ===== */
-.slideshow-container .prev {
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-.slideshow-container .next {
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-/* Make arrows large, circular and visible */
-.slideshow-container .prev, .slideshow-container .next {
-  position: absolute;
-  z-index: 3;
-  color: #fff;
-  font-size: 2.2rem;
-  background: rgba(0,0,0,0.28);
-  padding: 0.7em 0.9em;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  user-select: none;
-  transition: background .25s;
-}
-.slideshow-container .prev:hover, .slideshow-container .next:hover {
-  background: rgba(0,0,0,0.50);
-}
 
 
 
