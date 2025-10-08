@@ -566,3 +566,42 @@ messageStyles.textContent = `
     }
 `;
 document.head.appendChild(messageStyles);
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const prev = document.querySelector('.prev');
+    const next = document.querySelector('.next');
+    const slideInterval = 5000; // 5 seconds per slide
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.remove('active');
+            if (i === index) {
+                slide.classList.add('active');
+            }
+        });
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    if (slides.length > 0) {
+        showSlide(0); // Show the first slide initially
+        setInterval(nextSlide, slideInterval); // Auto-play the slideshow
+
+        if(prev && next){
+            prev.addEventListener('click', prevSlide);
+            next.addEventListener('click', nextSlide);
+        }
+    }
+});
+
