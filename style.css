@@ -753,15 +753,20 @@ select.form-control {
 /* END PERPLEXITY DESIGN SYSTEM */
 /* Custom Design System Overrides */
 :root {
-  /* Custom Color Palette */
-  --color-charcoal-primary: #1a1a1a;
-  --color-charcoal-secondary: #2a2a2a;
-  --color-gold-accent: #DAA520;
-  --color-gold-light: #F4E09A;
-  --color-warm-white: #fafafa;
-  --color-glass-bg: rgba(255, 255, 255, 0.05);
-  --color-glass-border: rgba(255, 255, 255, 0.2);
-  --color-glass-shadow: rgba(0, 0, 0, 0.1);
+/* Custom Color Palette */
+--color-background: #F5F5DC;
+--color-primary: #50A3AB;
+--color-text-dark: #232323;
+--color-border-accent: #7CBAC1; /* Lighter blue for hover */
+--color-white: #FFFFFF;
+
+/* --- Below are your old variables, now pointing to the new ones --- */
+--color-charcoal-primary: var(--color-background); /* NOW BEIGE */
+--color-charcoal-secondary: var(--color-background); /* NOW BEIGE */
+--color-gold-accent: var(--color-primary); /* NOW BLUE-GREEN */
+--color-gold-light: var(--color-border-accent); /* NOW LIGHTER BLUE */
+--color-warm-white: var(--color-text-dark); /* NOW DARK TEXT */
+
 
   /* Typography */
   --font-display: 'Playfair Display', serif;
@@ -786,8 +791,8 @@ html {
 }
 
 body {
-  background: linear-gradient(135deg, var(--color-charcoal-primary) 0%, var(--color-charcoal-secondary) 100%);
-  color: var(--color-warm-white);
+  background: var(--color-background); /* This makes the whole background beige */
+  color: var(--color-text-dark); /* This makes the default text dark gray */
   font-family: var(--font-body);
   line-height: 1.6;
   overflow-x: hidden;
@@ -797,7 +802,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   font-weight: 600;
-  color: var(--color-warm-white);
+ color: var(--color-primary);
   letter-spacing: -0.02em;
 }
 
@@ -843,9 +848,9 @@ h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(26, 26, 26, 0.5);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+background: var(--color-background);
+  backdrop-filter: none; /* Remove blur as it's not needed on a solid color */
+  border-bottom: 1px solid var(--color-border-accent); /* Light blue border */
   transition: all var(--duration-medium) var(--ease-standard);
 }
 
@@ -863,7 +868,7 @@ h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
   font-family: var(--font-display);
   font-size: var(--font-size-xl);
   font-weight: 600;
-  color: var(--color-gold-accent);
+  color: var(--color-border-accent);
   text-decoration: none;
   transition: all var(--duration-medium) var(--ease-bounce);
 }
@@ -880,7 +885,7 @@ h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
 }
 
 .nav-link {
-  color: var(--color-warm-white);
+  color: var(--color-primary);
   text-decoration: none;
   font-weight: 500;
   transition: all var(--duration-fast) var(--ease-standard);
@@ -894,7 +899,7 @@ h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--color-gold-accent);
+  background: var(--color-border-accent);
   transition: width var(--duration-medium) var(--ease-elastic);
 }
 
@@ -903,7 +908,7 @@ h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
 }
 
 .nav-link:hover {
-  color: var(--color-gold-accent);
+  color: var(--color-border-accent);
 }
 
 /* Dropdown */
@@ -943,7 +948,7 @@ h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
 .dropdown-link {
   display: block;
   padding: var(--space-8) var(--space-12);
-  color: var(--color-warm-white);
+  color: var(--color-primary);
   text-decoration: none;
   border-radius: var(--radius-base);
   transition: all var(--duration-fast) var(--ease-standard);
@@ -952,7 +957,7 @@ h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
 
 .dropdown-link:hover {
   background: rgba(218, 165, 32, 0.1);
-  color: var(--color-gold-accent);
+  color: var(--color-border-accent);
 }
 
 /* Mobile Menu */
@@ -967,7 +972,7 @@ h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
 .mobile-menu-toggle span {
   width: 24px;
   height: 2px;
-  background: var(--color-warm-white);
+  background: var(--color-primary);
   transition: all var(--duration-fast) var(--ease-standard);
 }
 
@@ -984,7 +989,7 @@ h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
   padding: 120px var(--space-24) var(--space-24);
   position: relative; /* This is crucial for layering */
   overflow: hidden;   /* Prevents blur from bleeding out */
-  background: var(--color-charcoal-primary); /* Fallback color */
+  background: var(--color-background); /* Fallback color */
 }
 
 /* --- Paxika-Style Background Image Layer --- */
@@ -1004,8 +1009,9 @@ h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
  /** background-attachment: fixed; /* Parallax effect */
 
   /* --- THE BLACK & WHITE BLURRY EFFECT --- */
-  filter: grayscale(100%) blur(5px) brightness(0.5);
-  opacity: 0.4;
+  filter: none; /* Or a different filter like sepia(50%) */
+opacity: 0.1; /* Make it very faint */
+
 }
 
 /* --- Hero Content Container (Stays on Top) --- */
@@ -1033,7 +1039,7 @@ h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--color-gold-accent), var(--color-gold-light));
+  background: linear-gradient(135deg, var(--color-border-accent), var(--color-gold-light));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1046,7 +1052,7 @@ h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
   height: 280px;
   border-radius: 50%;
   background: var(--color-charcoal-secondary);
-  border: 3px solid var(--color-gold-accent);
+  border: 3px solid var(--color-border-accent);
   position: relative;
 }
 
@@ -1426,25 +1432,26 @@ h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
 }
 
 .btn--primary {
-  background: linear-gradient(135deg, var(--color-gold-accent), var(--color-gold-light));
-  color: var(--color-charcoal-primary);
+  background: linear-gradient(135deg, var(--color-background), var(--color-gold-light));
+  color: var(--color-white);
   border: none;
 }
 
 .btn--primary:hover {
   transform: translateY(-2px);
+   background: var(--color-border-accent); /* Lighter blue on hover */
   box-shadow: 0 8px 24px rgba(218, 165, 32, 0.3);
 }
 
 .btn--outline {
-  border: 2px solid var(--color-gold-accent);
-  color: var(--color-gold-accent);
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
   background: transparent;
 }
 
 .btn--outline:hover {
-  background: var(--color-gold-accent);
-  color: var(--color-charcoal-primary);
+  background: var(--color-primary);
+  color: var(--color-white);
   transform: translateY(-2px);
 }
 
