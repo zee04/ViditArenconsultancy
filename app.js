@@ -1,6 +1,8 @@
-// ADD THIS NEW CLASS TO THE TOP OF APP.JS
+// =======================================================
+// === FINAL, SMOOTH & RELIABLE SLIDESHOW CLASS        ===
+// =======================================================
 class SmoothSlideshow {
-    constructor(selector = '.slide', options = {}) {
+    constructor(selector, options = {}) {
         this.slides = document.querySelectorAll(selector);
         if (this.slides.length === 0) return;
 
@@ -9,18 +11,13 @@ class SmoothSlideshow {
             fadeDuration: 1500,
             ...options
         };
-
         this.currentIndex = 0;
-        this.init();
+        this.lastTimestamp = 0;
+        this.rafId = null;
+        this.isRunning = false;
     }
 
     init() {
-        this.setupSlides();
-        this.startAutoplay();
-        this.bindEvents();
-    }
-
-    setupSlides() {
         this.slides.forEach((slide, index) => {
             slide.style.position = 'absolute';
             slide.style.top = '0';
@@ -31,20 +28,43 @@ class SmoothSlideshow {
             slide.style.zIndex = index === 0 ? '1' : '0';
             slide.style.transition = `opacity ${this.options.fadeDuration}ms ease-in-out`;
         });
+        this.start();
+        this.bindEvents();
+    }
+
+    start() {
+        if (this.isRunning) return;
+        this.isRunning = true;
+        this.rafId = requestAnimationFrame(this.animate.bind(this));
+    }
+
+    stop() {
+        if (!this.isRunning) return;
+        this.isRunning = false;
+        cancelAnimationFrame(this.rafId);
+    }
+
+    animate(now) {
+        if (!this.lastTimestamp) {
+            this.lastTimestamp = now;
+        }
+        const elapsed = now - this.lastTimestamp;
+        if (elapsed > this.options.interval) {
+            this.lastTimestamp = now;
+            this.next();
+        }
+        this.rafId = requestAnimationFrame(this.animate.bind(this));
     }
 
     showSlide(index) {
         if (index === this.currentIndex) return;
-
         const currentSlide = this.slides[this.currentIndex];
         const nextSlide = this.slides[index];
 
         nextSlide.style.zIndex = '1';
         nextSlide.style.opacity = '1';
-
         currentSlide.style.zIndex = '0';
-        // We don't need a timeout, CSS transition handles the fade-out
-        
+
         this.currentIndex = index;
     }
 
@@ -58,40 +78,27 @@ class SmoothSlideshow {
         this.showSlide(prevIndex);
     }
 
-    startAutoplay() {
-        this.stopAutoplay();
-        this.autoplayTimer = setInterval(() => this.next(), this.options.interval);
-    }
+    bindEvents() {
+        const prevButton = document.querySelector('.slideshow-arrow.prev');
+        const nextButton = document.querySelector('.slideshow-arrow.next');
 
-    stopAutoplay() {
-        if (this.autoplayTimer) {
-            clearInterval(this.autoplayTimer);
+        if (prevButton) {
+            prevButton.addEventListener('click', () => {
+                this.stop();
+                this.prev();
+                this.start();
+            });
+        }
+        if (nextButton) {
+            nextButton.addEventListener('click', () => {
+                this.stop();
+                this.next();
+                this.start();
+            });
         }
     }
-
-    bindEvents() {
-    // Correctly select the arrows using their full, specific classes
-    const prevButton = document.querySelector('.slideshow-arrow.prev');
-    const nextButton = document.querySelector('.slideshow-arrow.next');
-
-    if (prevButton) {
-        prevButton.addEventListener('click', () => {
-            this.prev();
-            // It's good practice to restart the autoplay timer after a manual click
-            this.startAutoplay();
-        });
-    }
-
-    if (nextButton) {
-        nextButton.addEventListener('click', () => {
-            this.next();
-            // Restart the autoplay timer here as well
-            this.startAutoplay();
-        });
-    }
 }
 
-}
 
 
 // Smooth scrolling and momentum effects
@@ -554,6 +561,7 @@ const Utils = {
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize all components
     const heroSlideshow = new SmoothSlideshow('.slide'); // <-- ADD THIS LINE
+    heroSlideshow.init(); // Initialize the slideshow
     const navigation = new Navigation();
     const animationObserver = new AnimationObserver();
     const formHandler = new FormHandler();
