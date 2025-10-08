@@ -99,6 +99,83 @@ class SmoothSlideshow {
     }
 }
 
+// =============================================
+// === 3D FLIPPING CARD CAROUSEL             ===
+// =============================================
+class FlippingCarousel {
+    constructor(carouselSelector) {
+        this.carousel = document.querySelector(carouselSelector);
+        if (!this.carousel) return;
+
+        this.flipperCards = this.carousel.querySelectorAll('.carousel-card-flipper');
+        this.prevButton = document.querySelector('.carousel-arrow.prev');
+        this.nextButton = document.querySelector('.carousel-arrow.next');
+        
+        this.totalItems = this.flipperCards.length;
+        this.currentIndex = 0;
+        this.angle = 360 / this.totalItems;
+        this.isFlipped = false;
+        
+        this.init();
+    }
+
+    init() {
+        this.arrangeCarousel();
+        this.bindEvents();
+    }
+
+    arrangeCarousel() {
+        const rotationAngle = -this.currentIndex * this.angle;
+        this.carousel.style.transform = `rotateY(${rotationAngle}deg)`;
+
+        // Arrange each card in a 3D circle
+        const tz = Math.round((this.carousel.offsetWidth / 2) / Math.tan(Math.PI / this.totalItems));
+        
+        this.flipperCards.forEach((flipper, index) => {
+            const itemAngle = index * this.angle;
+            flipper.style.transform = `rotateY(${itemAngle}deg) translateZ(${tz}px)`;
+
+            // Make non-active cards slightly transparent and blurred
+            const isActive = index === this.currentIndex;
+            flipper.style.filter = isActive ? 'none' : 'blur(2px) grayscale(80%)';
+            flipper.style.opacity = isActive ? '1' : '0.5';
+            flipper.style.cursor = isActive ? 'pointer' : 'default';
+        });
+    }
+
+    bindEvents() {
+        this.nextButton.addEventListener('click', () => {
+            this.unflipCurrentCard();
+            this.currentIndex++;
+            this.arrangeCarousel();
+        });
+
+        this.prevButton.addEventListener('click', () => {
+            this.unflipCurrentCard();
+            this.currentIndex--;
+            this.arrangeCarousel();
+        });
+
+        // Click a card to flip it
+        this.flipperCards.forEach((flipper, index) => {
+            flipper.addEventListener('click', () => {
+                // Only allow flipping the active (front) card
+                if (index === this.currentIndex) {
+                    flipper.classList.toggle('flipped');
+                    this.isFlipped = flipper.classList.contains('flipped');
+                }
+            });
+        });
+    }
+
+    unflipCurrentCard() {
+        const currentFlipper = this.flipperCards[this.currentIndex];
+        if (currentFlipper) {
+            currentFlipper.classList.remove('flipped');
+        }
+        this.isFlipped = false;
+    }
+}
 
 
 // Smooth scrolling and momentum effects
@@ -562,6 +639,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize all components
     const heroSlideshow = new SmoothSlideshow('.slide'); // <-- ADD THIS LINE
     heroSlideshow.init(); // Initialize the slideshow
+    const projectCarousel = new FlippingCarousel('.project-carousel');
     const navigation = new Navigation();
     const animationObserver = new AnimationObserver();
     const formHandler = new FormHandler();
