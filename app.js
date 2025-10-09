@@ -254,9 +254,7 @@ class FlippingCoverFlow {
 
         // The close button is created dynamically, so we attach this listener when the modal opens.
         // This is handled inside the showFlipModal method.
-    }
-
-}
+   
 
 
 
