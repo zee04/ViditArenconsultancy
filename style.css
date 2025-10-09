@@ -1850,8 +1850,6 @@ a.btn.btn--secondary:focus {
     cursor: pointer;
     /* Smooth transitions for movement, scaling, and filters */
     transition: transform 0.5s ease, opacity 0.5s ease, filter 0.5s ease;
-   /* THIS IS THE FIX FOR DESKTOP ANIMATIONS */
-    will-change: transform, opacity, filter;
 }
 
 .logo-card img {
@@ -1910,34 +1908,18 @@ a.btn.btn--secondary:focus {
     pointer-events: auto;
 }
 
-/* In your style.css file */
-
 .flipper {
     width: 90vw;
     max-width: 550px;
     height: 400px;
     position: relative;
     transform-style: preserve-3d;
-    
-    /* --- THIS IS THE FIX --- */
-    /* Start the flipper completely transparent and slightly scaled down */
-    opacity: 0;
-    transform: scale(0.9);
-    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    /* --- END OF FIX --- */
+    transition: transform 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    transform: rotateY(180deg); /* Start flipped away */
 }
-
-
-/* In your style.css file */
-
 .project-flip-container.active .flipper {
-    /* --- THIS IS THE FIX --- */
-    /* On active, make it fully opaque and normal size */
-    opacity: 1;
-    transform: scale(1);
-    /* --- END OF FIX --- */
+    transform: rotateY(0deg); /* Flip into view when active */
 }
-
 
 .flip-front, .flip-back {
     position: absolute;
@@ -1952,12 +1934,9 @@ a.btn.btn--secondary:focus {
     background: var(--color-surface);
 }
 
-/* In your style.css file */
-
 .flip-back {
-    /* Fixed background and text colors */
-    background: var(--color-charcoal-700); /* Dark background */
-    color: #FFFFFF; /* White text */
+    /* This is the details card */
+    background: var(--color-surface);
     border: 1px solid var(--color-border);
     box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
     padding: 40px;
@@ -1968,17 +1947,7 @@ a.btn.btn--secondary:focus {
     text-align: center;
 }
 
-/* Also fix the specific text elements inside */
-.flip-back h3,
-.flip-back p {
-    color: #FFFFFF !important;
-}
-
-.flip-back h3 {
-    margin-top: 0;
-    color: var(--color-primary) !important; /* Keep the heading teal */
-}
-
+.flip-back h3 { margin-top: 0; color: var(--color-primary); }
 .flip-back .project-type { font-style: italic; opacity: 0.7; margin-bottom: 15px; }
 
 .modal-close-btn {
@@ -1995,6 +1964,7 @@ a.btn.btn--secondary:focus {
     z-index: 5;
 }
 .modal-close-btn:hover { opacity: 1; }
+
 
 
 
