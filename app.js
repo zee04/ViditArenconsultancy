@@ -207,28 +207,60 @@ class FlippingCoverFlow {
         this.flipContainer.classList.remove('active');
     }
 
-    bindEvents() {
-        this.nextButton.addEventListener('click', () => {
-            this.currentIndex = (this.currentIndex + 1) % this.projects.length;
-            this.updateCarouselPositions();
-        });
+   bindEvents() {
+    this.nextButton.addEventListener('click', () => {
+        this.currentIndex = (this.currentIndex + 1) % this.projects.length;
+        this.updateCarouselPositions();
+    });
 
-        this.prevButton.addEventListener('click', () => {
-            this.currentIndex = (this.currentIndex - 1 + this.projects.length) % this.projects.length;
-            this.updateCarouselPositions();
-        });
+    this.prevButton.addEventListener('click', () => {
+        this.currentIndex = (this.currentIndex - 1 + this.projects.length) % this.projects.length;
+        this.updateCarouselPositions();
+    });
 
-        this.carousel.addEventListener('click', (e) => {
+    // FIXED: Separate touch and click handling for mobile vs desktop
+    let touchStartTime = 0;
+    let touchEndTime = 0;
+
+    // Handle touch events for mobile
+    this.carousel.addEventListener('touchstart', (e) => {
+        touchStartTime = Date.now();
+    });
+
+    this.carousel.addEventListener('touchend', (e) => {
+        touchEndTime = Date.now();
+        const touchDuration = touchEndTime - touchStartTime;
+        
+        // Only trigger if it's a quick tap (not a scroll)
+        if (touchDuration < 200) {
             const card = e.target.closest('.logo-card');
             if (card && parseInt(card.dataset.index) === this.currentIndex) {
+                e.preventDefault();
+                e.stopPropagation();
                 this.showFlipModal(this.currentIndex);
             }
-        });
+        }
+    });
+
+    // Handle click events for desktop (but not mobile)
+    this.carousel.addEventListener('click', (e) => {
+        // Skip if this is a mobile touch device
+        if ('ontouchstart' in window) return;
         
-        this.flipContainer.addEventListener('click', (e) => {
-            if (e.target === this.flipContainer) this.hideFlipModal();
-        });
-    }
+        const card = e.target.closest('.logo-card');
+        if (card && parseInt(card.dataset.index) === this.currentIndex) {
+            this.showFlipModal(this.currentIndex);
+        }
+    });
+
+    // FIXED: Only close modal when clicking the background, not anywhere
+    this.flipContainer.addEventListener('click', (e) => {
+        if (e.target === this.flipContainer) {
+            this.hideFlipModal();
+        }
+    });
+}
+
 }
 
 
