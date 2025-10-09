@@ -1023,6 +1023,9 @@ background: var(--color-background);
     height: 100%;
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
+     will-change: opacity;
+    transform: translateZ(0); /* Forces hardware acceleration */
+    backface-visibility: hidden; /* Prevents flickering */
 }
 
 .slide.active {
@@ -1846,8 +1849,9 @@ a.btn.btn--secondary:focus {
     box-sizing: border-box;
     cursor: pointer;
     transition: transform 0.5s ease, opacity 0.5s ease, filter 0.5s ease;
-    /* FIX FOR DESKTOP ANIMATION STIFFNESS */
     will-change: transform, opacity, filter;
+    transform: translateZ(0); /* Forces GPU acceleration */
+    backface-visibility: hidden; /* Prevents visual glitches */
 }
 
 .logo-card img {
@@ -1960,6 +1964,19 @@ a.btn.btn--secondary:focus {
 }
 .modal-close-btn:hover { opacity: 1; }
 
+/* FORCE DESKTOP ANIMATION ACCELERATION */
+@media (min-width: 768px) {
+    .slide, 
+    .logo-card,
+    .flipper,
+    .hero-section,
+    .slideshow-container {
+        transform: translateZ(0);
+        will-change: transform, opacity;
+        -webkit-transform-style: preserve-3d;
+        -webkit-backface-visibility: hidden;
+    }
+}
 
 
 
