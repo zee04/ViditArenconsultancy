@@ -743,12 +743,17 @@ const Utils = {
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize all components
+    const heroSlideshow = new SmoothSlideshow('.slide');
+    if (heroSlideshow.slides.length > 0) {
+        heroSlideshow.init();
+    }
     const coverFlow = new FlippingCoverFlow('.logo-carousel-container');
     const navigation = new Navigation();
     const animationObserver = new AnimationObserver();
     const formHandler = new FormHandler();
     const cardEffects = new CardEffects();
     const loadingScreen = new LoadingScreen();
+    
     
     // Initialize parallax only on desktop
     if (window.innerWidth > 768) {
