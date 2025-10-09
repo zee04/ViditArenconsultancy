@@ -1808,11 +1808,10 @@ a.btn.btn--secondary:focus {
 }
 
 
-/* ======================================================= */
-/* === CLEAN COVER-FLOW CAROUSEL & FLIP-MODAL (FINAL)  === */
-/* ======================================================= */
+/* =================================================================== */
+/* === FINAL CAROUSEL - LOOPING, SMOOTH & VISIBLE CONTENT === */
+/* =================================================================== */
 
-/* 1. The Carousel Container */
 .logo-carousel-container {
     position: relative;
     width: 100%;
@@ -1823,7 +1822,6 @@ a.btn.btn--secondary:focus {
     margin-top: 50px;
 }
 
-/* 2. The Carousel Track */
 .logo-carousel {
     position: relative;
     height: 100%;
@@ -1833,7 +1831,6 @@ a.btn.btn--secondary:focus {
     align-items: center;
 }
 
-/* 3. Each Logo Card */
 .logo-card {
     position: absolute;
     width: 220px;
@@ -1848,8 +1845,9 @@ a.btn.btn--secondary:focus {
     padding: 20px;
     box-sizing: border-box;
     cursor: pointer;
-    /* Smooth transitions for movement, scaling, and filters */
     transition: transform 0.5s ease, opacity 0.5s ease, filter 0.5s ease;
+    /* FIX FOR DESKTOP ANIMATION STIFFNESS */
+    will-change: transform, opacity, filter;
 }
 
 .logo-card img {
@@ -1858,7 +1856,6 @@ a.btn.btn--secondary:focus {
     object-fit: contain;
 }
 
-/* 4. Carousel Navigation */
 .carousel-arrow {
     position: absolute;
     top: 50%;
@@ -1886,7 +1883,6 @@ a.btn.btn--secondary:focus {
     .carousel-arrow.next { right: calc(50% - 300px); }
 }
 
-/* 5. The Flipping Modal System */
 .project-flip-container {
     position: fixed;
     top: 0;
@@ -1897,7 +1893,6 @@ a.btn.btn--secondary:focus {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Invisible by default */
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.4s ease;
@@ -1915,10 +1910,10 @@ a.btn.btn--secondary:focus {
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    transform: rotateY(180deg); /* Start flipped away */
+    transform: rotateY(180deg);
 }
 .project-flip-container.active .flipper {
-    transform: rotateY(0deg); /* Flip into view when active */
+    transform: rotateY(0deg);
 }
 
 .flip-front, .flip-back {
@@ -1930,13 +1925,13 @@ a.btn.btn--secondary:focus {
 }
 
 .flip-front {
-    /* This side is initially hidden, it's just a placeholder */
     background: var(--color-surface);
 }
 
 .flip-back {
-    /* This is the details card */
+    /* FIX FOR INVISIBLE CONTENT */
     background: var(--color-surface);
+    color: var(--color-text);
     border: 1px solid var(--color-border);
     box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
     padding: 40px;
@@ -1964,6 +1959,7 @@ a.btn.btn--secondary:focus {
     z-index: 5;
 }
 .modal-close-btn:hover { opacity: 1; }
+
 
 
 
