@@ -209,7 +209,8 @@ class FlippingCoverFlow {
         this.flipContainer.classList.remove('active');
     }
 
-    bindEvents() {
+        bindEvents() {
+        // --- ARROW NAVIGATION ---
         this.nextButton.addEventListener('click', () => {
             this.currentIndex = (this.currentIndex + 1) % this.projects.length;
             this.updateCarouselPositions();
@@ -220,22 +221,37 @@ class FlippingCoverFlow {
             this.updateCarouselPositions();
         });
 
-      this.carousel.addEventListener('click', (e) => {
-            // ===========================================
-            // === THE DEFINITIVE FIX IS THIS ONE LINE ===
-            // ===========================================
-            e.stopPropagation(); 
-            
+        // --- THE FINAL, CORRECTED MODAL TRIGGER ---
+        // This handles both mouse clicks and taps without conflict.
+        const openModal = (e) => {
             const card = e.target.closest('.logo-card');
             if (card && parseInt(card.dataset.index) === this.currentIndex) {
+                e.preventDefault(); // Prevents unwanted behavior on touch devices
+                e.stopPropagation(); // Stops the event from bubbling
                 this.showFlipModal(this.currentIndex);
             }
-        });
+        };
         
+        // We listen for the 'touchend' event for mobile and 'click' for desktop
+        this.carousel.addEventListener('touchend', openModal);
+        this.carousel.addEventListener('click', openModal);
+
+        // --- CLOSING THE MODAL ---
+        const closeModal = (e) => {
+            e.preventDefault();
+            this.hideFlipModal();
+        };
+
         this.flipContainer.addEventListener('click', (e) => {
-            if (e.target === this.flipContainer) this.hideFlipModal();
+            if (e.target === this.flipContainer) {
+                closeModal(e);
+            }
         });
+
+        // The close button is created dynamically, so we attach this listener when the modal opens.
+        // This is handled inside the showFlipModal method.
     }
+
 }
 
 
