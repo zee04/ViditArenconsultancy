@@ -1960,19 +1960,6 @@ a.btn.btn--secondary:focus {
 }
 .modal-close-btn:hover { opacity: 1; }
 
-/* FORCE DESKTOP ANIMATION ACCELERATION */
-@media (min-width: 768px) {
-    .slide, 
-    .logo-card,
-    .flipper,
-    .hero-section,
-    .slideshow-container {
-        transform: translateZ(0);
-        will-change: transform, opacity;
-        -webkit-transform-style: preserve-3d;
-        -webkit-backface-visibility: hidden;
-    }
-}
 
 
 
