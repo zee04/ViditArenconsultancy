@@ -1910,10 +1910,10 @@ a.btn.btn--secondary:focus {
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    transform: rotateY(180deg);
+    transform: rotateY(0deg);
 }
 .project-flip-container.active .flipper {
-    transform: rotateY(0deg);
+    transform: rotateY(180deg);
 }
 
 .flip-front, .flip-back {
