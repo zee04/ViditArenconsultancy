@@ -9,11 +9,11 @@
      <!-- ======================================================= -->
 <!--         FINAL & CORRECT FAVICON IMPLEMENTATION          -->
 <!-- ======================================================= -->
-<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
-<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg">
-<link rel="shortcut icon" href="/favicon/favicon.ico">
-<link rel="manifest" href="/favicon/site.webmanifest">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+<link rel="icon" type="image/svg+xml" href="favicon/favicon.svg">
+<link rel="shortcut icon" href="favicon/favicon.ico">
+<link rel="manifest" href="favicon/site.webmanifest">
 <meta name="msapplication-TileColor" content="#1a1a1a">
 <meta name="theme-color" content="#ffffff"> 
 
@@ -95,97 +95,145 @@
     <main>
 
         <!-- Services Section -->
-        <section id="services" class="services-section has-bg-image">
-            <div class="container">
-                <h2 class="section-title">Our Services</h2>
-                <div class="services-grid">
-                    <div class="service-card glass-card" data-service="culinary">
-                        <div class="service-icon">👨‍🍳</div>
-                        <h3>Culinary Consultancy</h3>
-                        <p>We help culinary teams design kitchens, refine menus, and develop systems that blend creativity with precision. Rooted in respect for process, produce, and people behind the pass.</p>
-                        <a href="contact.html" class="service-cta">Contact Us</a>
-                    </div>
+       <section class="services-section">
+            <div class="services-container">
+                <!-- Left Side: Services List -->
+                <div class="services-content">
+                    <h1 class="services-title">Our Services</h1>
+                    <p class="services-subtitle">Comprehensive culinary and hospitality solutions tailored to your vision</p>
                     
-                    <div class="service-card glass-card" data-service="hospitality">
-                        <div class="service-icon">🏨</div>
-                        <h3>Hospitality Consultancy</h3>
-                        <p>Turn your idea of opening that homestay, hotel, or resort into reality, whether it's driven by self-sustainable practices or built for new-age concepts.</p>
-                        <a href="contact.html" class="service-cta">Contact Us</a>
+                    <div class="services-grid">
+                        <!-- First Column -->
+                        <div class="services-column">
+                            <div class="service-item">
+                                <div class="service-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/>
+                                    </svg>
+                                </div>
+                                <div class="service-info">
+                                    <h3>Turn Key Solutions</h3>
+                                    <p>Complete end-to-end restaurant development, brand identity creation, operational systems setup, staff recruitment & training</p>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item">
+                                <div class="service-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M3 21h18"/>
+                                        <path d="M5 21V7l8-4v18"/>
+                                        <path d="M19 21V11l-6-4"/>
+                                    </svg>
+                                </div>
+                                <div class="service-info">
+                                    <h3>Hospitality Consultancy</h3>
+                                    <p>Homestay development, hotel concepts, resort planning, guest experience design, sustainable practices implementation</p>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item">
+                                <div class="service-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"/>
+                                        <line x1="10" y1="9" x2="10" y2="9"/>
+                                        <line x1="14" y1="9" x2="14" y2="9"/>
+                                    </svg>
+                                </div>
+                                <div class="service-info">
+                                    <h3>Culinary Consultancy</h3>
+                                    <p>Menu development & planning, recipe standardization, kitchen design, culinary team training, food quality systems</p>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item">
+                                <div class="service-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M3 3v18h18"/>
+                                        <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/>
+                                    </svg>
+                                </div>
+                                <div class="service-info">
+                                    <h3>Marketing Strategy</h3>
+                                    <p>Brand positioning, social media strategy, PR campaigns, community engagement, launch planning & execution</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Second Column -->
+                        <div class="services-column">
+                            <div class="service-item">
+                                <div class="service-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                                        <circle cx="12" cy="13" r="4"/>
+                                    </svg>
+                                </div>
+                                <div class="service-info">
+                                    <h3>Food Styling & Photography</h3>
+                                    <p>Professional food styling, menu photography, brand visual content, campaign shoots, social media assets creation</p>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item">
+                                <div class="service-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                                    </svg>
+                                </div>
+                                <div class="service-info">
+                                    <h3>Pop-ups & Events</h3>
+                                    <p>Pop-up restaurant concepts, event curation, masterclass workshops, festival participation, brand activation events</p>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item">
+                                <div class="service-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <circle cx="12" cy="12" r="3"/>
+                                        <path d="M12 1v6m0 6v6"/>
+                                        <path d="M21 12h-6M9 12H3"/>
+                                        <path d="M18.364 5.636L15.536 8.464"/>
+                                        <path d="M8.464 15.536L5.636 18.364"/>
+                                        <path d="M18.364 18.364L15.536 15.536"/>
+                                        <path d="M8.464 8.464L5.636 5.636"/>
+                                    </svg>
+                                </div>
+                                <div class="service-info">
+                                    <h3>Business Strategy</h3>
+                                    <p>Market analysis, expansion planning, operational efficiency, problem solving, profitability optimization, growth strategies</p>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item">
+                                <div class="service-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <line x1="12" y1="1" x2="12" y2="23"/>
+                                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                    </svg>
+                                </div>
+                                <div class="service-info">
+                                    <h3>Revenue Modelling</h3>
+                                    <p>Financial forecasting, cost analysis, pricing strategies, profit margin optimization, budget planning & monitoring</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="service-card glass-card" data-service="brand">
-                        <div class="service-icon">🎨</div>
-                        <h3>Brand Development</h3>
-                        <p>From naming and narrative to visual design and guest journey, we work closely with founders and chefs to express what makes a space unique without artifice.</p>
-                        <a href="contact.html" class="service-cta">Contact Us</a>
-                    </div>
-
-                    <div class="service-card glass-card" data-service="marketing">
-                        <div class="service-icon">📢</div>
-                        <h3>Marketing & Communications</h3>
-                        <p>We help shape how a restaurant is introduced to the world — not through noise, but through thoughtful messaging, creative alignment, and meaningful community engagement.</p>
-                        <a href="contact.html" class="service-cta">Contact Us</a>
-                    </div>
-
-                    <div class="service-card glass-card" data-service="design">
-                        <div class="service-icon">🏗️</div>
-                        <h3>Kitchen & Bar Design</h3>
-                        <p>Collaborating closely with interior designers and kitchen consultants to ensure the kitchen and bar layout is optimized for efficiency and aesthetic excellence.</p>
-                        <a href="contact.html" class="service-cta">Contact Us</a>
-                    </div>
-
-                    <div class="service-card glass-card" data-service="recipes">
-                        <div class="service-icon">📝</div>
-                        <h3>Recipe Standardization | Condiment Development</h3>
-                        <p>Recipe cards for both finished and semi-finished dishes. Developing condiments for retail brands with SOP and recipe details.</p>
-                        <a href="contact.html" class="service-cta">Contact Us</a>
-                    </div>
-
-                    <div class="service-card glass-card" data-service="photography">
-                        <div class="service-icon">📸</div>
-                        <h3>Food Styling & Photography</h3>
-                        <p>Offering dedicated food styling services for signature dishes to enhance marketing campaigns and product launches.</p>
-                        <a href="contact.html" class="service-cta">Contact Us</a>
-                    </div>
-
-                    <div class="service-card glass-card" data-service="budgeting">
-                        <div class="service-icon">💰</div>
-                        <h3>Food & Beverage Revenue Budgeting</h3>
-                        <p>Developing a comprehensive revenue model by forecasting average spend per cover and net sales, ensuring financial targets are met with precision.</p>
-                        <a href="contact.html" class="service-cta">Contact Us</a>
-                    </div>
-
-                    <div class="service-card glass-card" data-service="events">
-                        <div class="service-icon">🎉</div>
-                        <h3>Event & Pop-up Curation</h3>
-                        <p>Curating innovative concepts for 1-2 day workshops or masterclasses designed to significantly enhance your brand's customer engagement.</p>
-                        <a href="contact.html" class="service-cta">Contact Us</a>
-                    </div>
-
-                    <div class="service-card glass-card" data-service="festivals">
-                        <div class="service-icon">🎪</div>
-                        <h3>Festival Curation</h3>
-                        <p>Designing festivals that celebrate diverse culinary traditions, cultural expressions, and artistic endeavors centered around a core theme.</p>
-                        <a href="contact.html" class="service-cta">Contact Us</a>
-                    </div>
-
-                    <div class="service-card glass-card" data-service="menu-dev">
-                        <div class="service-icon">📋</div>
-                        <h3>Menu Development, Planning, & Execution</h3>
-                        <p>Developing menus based on client briefs, with a focus on maximizing efficiency and minimizing waste while maintaining the highest standards.</p>
-                        <a href="contact.html" class="service-cta">Contact Us</a>
-                    </div>
-
-                    <div class="service-card glass-card" data-service="menu-writing">
-                        <div class="service-icon">✍️</div>
-                        <h3>Menu Writing & Placement</h3>
-                        <p>Crafting menus that align with regional preferences, consumer habits, and the brand's desired projection to enhance customer engagement.</p>
-                        <a href="contact.html" class="service-cta">Contact Us</a>
+                </div>
+                
+                <!-- Right Side: Image -->
+                <div class="services-image">
+                    <img src="images/our-process.jpg" alt="Our Process" />
+                    <div class="image-overlay">
+                        <h2>OUR PROCESS</h2>
+                        <p>We work closely with clients to understand their vision and translate it into exceptional culinary experiences.</p>
+                        <p>From concept to execution, every detail is carefully crafted to ensure your brand stands out in the competitive culinary landscape.</p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+
       
 
     <!-- Footer -->
