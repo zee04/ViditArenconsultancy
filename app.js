@@ -99,6 +99,7 @@ class SmoothSlideshow {
     }
 }
 
+
 // ===============================================================
 // === FINAL CAROUSEL CLASS - WITH LOOPING & ALL FIXES         ===
 // ===============================================================
@@ -716,8 +717,11 @@ const Utils = {
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize all components
-    const heroSlideshow = new SmoothSlideshow('.slide'); // <-- ADD THIS LINE
-    heroSlideshow.init(); // Initialize the slideshow
+    const slides = document.querySelectorAll('.slide');
+if (slides.length > 0) {
+    const heroSlideshow = new SmoothSlideshow('.slide');
+    heroSlideshow.init();
+}
    const coverFlow = new FlippingCoverFlow('.logo-carousel-container');
     const navigation = new Navigation();
     const animationObserver = new AnimationObserver();
@@ -830,22 +834,6 @@ messageStyles.textContent = `
 document.head.appendChild(messageStyles);
 
 
-// Add this to the very end of app.js for testing
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('JavaScript is working!');
-    
-    // Test if the modal elements exist
-    const flipContainer = document.querySelector('.project-flip-container');
-    const flipBack = document.querySelector('.flip-back');
-    
-    console.log('Flip container found:', flipContainer);
-    console.log('Flip back found:', flipBack);
-    
-    if (flipBack) {
-        flipBack.innerHTML = '<h3 style="color: white;">TEST CONTENT</h3>';
-        console.log('Test content added');
-    }
-});
 
 
 
