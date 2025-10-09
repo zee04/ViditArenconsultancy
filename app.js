@@ -718,12 +718,7 @@ const Utils = {
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize all components
-    const slides = document.querySelectorAll('.slide');
-if (slides.length > 0) {
-    const heroSlideshow = new SmoothSlideshow('.slide');
-    heroSlideshow.init();
-}
-   const coverFlow = new FlippingCoverFlow('.logo-carousel-container');
+    const coverFlow = new FlippingCoverFlow('.logo-carousel-container');
     const navigation = new Navigation();
     const animationObserver = new AnimationObserver();
     const formHandler = new FormHandler();
