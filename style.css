@@ -1304,9 +1304,9 @@ background: var(--color-background);
 }
 
 .services-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 50px; /* More space between each service */
+    display: grid; /* Use Grid for perfect columns */
+    grid-template-columns: 1fr 1fr; /* This creates two equal columns */
+    gap: 60px 80px; /* Vertical and horizontal spacing */
 }
 
 .service-item {
@@ -1351,23 +1351,25 @@ background: var(--color-background);
 
 /* Enquire Button */
 .enquire-btn {
-    font-family: var(--font-body);
+    display: inline-block; /* Required for proper link styling */
+    font-family: var(--font-heading); /* FIXED: Use the 'Playfair Display' font */
+    font-weight: 500;
     font-size: 0.9rem;
-    font-weight: 600;
     color: var(--color-white);
     background-color: var(--color-charcoal-700);
     border: none;
     border-radius: 25px;
-    padding: 10px 24px;
+    padding: 12px 28px;
     cursor: pointer;
+    text-decoration: none; /* Removes the default link underline */
+    text-align: center;
     transition: all 0.3s ease;
-    text-transform: none;
 }
 
 .enquire-btn:hover {
     background-color: var(--color-teal-600);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 /* Right Side: Just Image */
