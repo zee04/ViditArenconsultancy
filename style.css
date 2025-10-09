@@ -1276,15 +1276,9 @@ background: var(--color-background);
 }
 
 .service-icon {
-    min-width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--color-white);
-    border-radius: 50%;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    flex-shrink: 0;
+    font-size: 48px;
+  margin-bottom: var(--space-16);
+  display: block;
 }
 
 .service-icon svg {
