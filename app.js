@@ -191,17 +191,30 @@ class FlippingCoverFlow {
         }
     }
     
-    showFlipModal(index) {
-        const project = this.projects[index];
-        this.flipContent.innerHTML = `
-            <button class="modal-close-btn">&times;</button>
-            <h3>${project.title}</h3>
-            ${project.type ? `<p class="project-type">${project.type}</p>` : ''}
-            <p>${project.description}</p>
-        `;
-        this.flipContainer.classList.add('active');
-        this.flipContainer.querySelector('.modal-close-btn').addEventListener('click', () => this.hideFlipModal(), { once: true });
+   showFlipModal(index) {
+    const project = this.projects[index];
+    
+    // FORCE the content to be visible immediately
+    this.flipContent.innerHTML = `
+        <button class="modal-close-btn">&times;</button>
+        <h3 style="color: #FFFFFF !important; margin-bottom: 15px;">${project.title}</h3>
+        ${project.type ? `<p class="project-type" style="color: #CCCCCC !important; font-style: italic; margin-bottom: 15px;">${project.type}</p>` : ''}
+        <p style="color: #FFFFFF !important; line-height: 1.6;">${project.description}</p>
+    `;
+    
+    // FORCE the flip-back to have the right colors
+    this.flipContent.style.backgroundColor = '#1f2121';
+    this.flipContent.style.color = '#FFFFFF';
+    
+    this.flipContainer.classList.add('active');
+    
+    // Add the close event
+    const closeBtn = this.flipContainer.querySelector('.modal-close-btn');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => this.hideFlipModal(), { once: true });
     }
+}
+
 
     hideFlipModal() {
         this.flipContainer.classList.remove('active');
