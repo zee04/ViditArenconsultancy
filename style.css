@@ -1012,22 +1012,29 @@ background: var(--color-background);
 }
 
 .slide {
-    /* THIS IS THE FIX */
+    /* Essential background styling */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     
-    /* These are from the JS, but having them here helps */
+    /* Essential positioning */
     position: absolute;
     width: 100%;
     height: 100%;
+    top: 0;
+    left: 0;
+    
+    /* Default hidden state */
     opacity: 0;
+    z-index: 1;
+    
+    /* Smooth animation */
     transition: opacity 1.5s ease-in-out;
- 
 }
 
 .slide.active {
     opacity: 1;
+    z-index: 2;
 }
 
 .slideshow-arrow {
