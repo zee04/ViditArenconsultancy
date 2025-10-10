@@ -1492,7 +1492,7 @@ body.warm-theme {
 .about-image {
     position: relative;
     overflow: hidden;
-    background-color: #4B5563;
+    background-color: #374151; 
 }
 
 .about-image img {
@@ -1500,7 +1500,7 @@ body.warm-theme {
     height: 100%;
     object-fit: cover;
     object-position: center;
-     opacity: 1
+    opacity: 1 !important;
 }
 
 /* Right Side: Content */
@@ -1512,10 +1512,12 @@ body.warm-theme {
     align-items: flex-start;
     padding: 80px 60px;
     color: white;
+  
 }
 
 .about-title {
     font-family: 'Inter', sans-serif;
+    opacity: 1 !important;
     font-size: 2.5rem;
     font-weight: 700;
     letter-spacing: 0.2em;
@@ -1527,10 +1529,12 @@ body.warm-theme {
 .about-text {
     margin-bottom: 50px;
     max-width: 500px;
+    opacity: 1 !important;
 }
 
 .about-text p {
     font-family: 'Inter', sans-serif;
+    opacity: 1 !important;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.7;
@@ -1575,20 +1579,24 @@ body.warm-theme {
         padding: 40px 30px;
         justify-content: flex-start;
         padding-top: 60px;
+      opacity: 1 !important;
     }
     
     .about-title {
         font-size: 2rem;
         margin-bottom: 30px;
+      opacity: 1 !important;
     }
     
     .about-text {
         margin-bottom: 40px;
+      opacity: 1 !important;
     }
     
     .about-text p {
         font-size: 0.95rem;
         margin-bottom: 20px;
+      opacity: 1 !important;
     }
 }
 
@@ -1596,15 +1604,18 @@ body.warm-theme {
     .about-content {
         padding: 30px 20px;
         padding-top: 50px;
+      opacity: 1 !important;
     }
     
     .about-title {
         font-size: 1.8rem;
+      opacity: 1 !important;
     }
     
     .about-cta-btn {
         padding: 16px 35px;
         font-size: 0.9rem;
+      opacity: 1 !important;
     }
 }
 
