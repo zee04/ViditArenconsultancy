@@ -1265,7 +1265,7 @@ background: var(--color-background);
 
 body.warm-theme {
     background-color: #F5F2E9; /* Warm beige background */
-    background-image: url('https://www.transparenttextures.com/patterns/old-paper.png'); /* Subtle paper texture */
+    background-image: url('images/concept2.PNG'); /* Subtle paper texture */
 }
 
 .services-page-section {
