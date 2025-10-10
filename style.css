@@ -1473,39 +1473,138 @@ body.warm-theme {
 }
 
 /* About Section */
-.about-content {
-  max-width: 900px;
-  margin: 0 auto;
+.about-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: stretch;
+    background-color: #6B7280; /* Cool blue-gray from reference */
+    position: relative;
 }
 
-.about-text .lead {
-  font-size: var(--font-size-lg);
-  margin-bottom: var(--space-24);
-  color: var(--color-gold-light);
+.about-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Perfect 50/50 split */
+    min-height: 100vh;
 }
 
-.about-text h3 {
-  color: var(--color-gold-accent);
-  margin: var(--space-24) 0 var(--space-16);
-}
-
-.about-cta {
-  text-align: center;
-  margin-top: var(--space-32);
-}
-
+/* Left Side: Image */
 .about-image {
-  width: 100%;
-  max-width: 400px;
-  margin: 2rem auto;
-  border-radius: 8px;
-  overflow: hidden;
+    position: relative;
+    overflow: hidden;
+    background-color: #4B5563;
 }
-.about-chef-image {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Right Side: Content */
+.about-content {
+    background-color: #6B7280; /* Same cool blue-gray as reference */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px 60px;
+    color: white;
+}
+
+.about-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: white;
+    margin-bottom: 40px;
+    line-height: 1.2;
+}
+
+.about-text {
+    margin-bottom: 50px;
+    max-width: 500px;
+}
+
+.about-text p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 25px;
+}
+
+.about-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* CTA Button */
+.about-cta-btn {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #6B7280;
+    background-color: white;
+    border: none;
+    padding: 18px 40px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border-radius: 0; /* Sharp corners like in reference */
+}
+
+.about-cta-btn:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .about-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 50vh 1fr;
+    }
+    
+    .about-content {
+        padding: 40px 30px;
+        justify-content: flex-start;
+        padding-top: 60px;
+    }
+    
+    .about-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+    
+    .about-text {
+        margin-bottom: 40px;
+    }
+    
+    .about-text p {
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-content {
+        padding: 30px 20px;
+        padding-top: 50px;
+    }
+    
+    .about-title {
+        font-size: 1.8rem;
+    }
+    
+    .about-cta-btn {
+        padding: 16px 35px;
+        font-size: 0.9rem;
+    }
 }
 
 /* Contact Section */
