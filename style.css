@@ -1268,11 +1268,13 @@ background: var(--color-background);
 
 /* 1. Body Styling with Background Image */
 .body-services-final {
-    /* My apologies for adding the external URL before. Use your own local image. */
-    background-image: url('images/concept2.PNG'); /* <<< SET YOUR BACKGROUND IMAGE HERE */
-    background-color: #DFDBCB; /* Fallback color */
-    background-attachment: fixed; /* Keeps the texture from scrolling with the page */
-    background-size: cover;
+    /* My apologies for the previous error. Use your actual background image file here. */
+    background-image: url('images/concept2.PNG'); /* <<< CONFIRM THIS IS THE CORRECT PATH */
+    background-color: #EAE8E1; /* A neutral, light beige fallback color */
+    background-attachment: fixed; /* This keeps the background image static while the content scrolls */
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-position: center center;
+    position: relative; /* This is necessary for the overlay effect to work correctly */
 }
 
 /* 2. Main Split-Screen Layout Container */
