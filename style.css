@@ -1266,45 +1266,46 @@ background: var(--color-background);
 /* ===   DEFINITIVE SERVICES PAGE STYLES (REPLACEMENT CODE)      === */
 /* ================================================================= */
 
-/* 1. Body and Main Layout */
+/* 1. Body Styling with Background Image */
 .body-services-final {
-    background-image: url('images/concept2.PNG'); /* <<< CHANGE THIS to your background image file */
-    background-color: #DFDBCB; /* A subtle, textured base color */
-    height: 100%;
-    margin: 0;
-    padding: 0;
+    /* My apologies for adding the external URL before. Use your own local image. */
+    background-image: url('images/concept2.PNG'); /* <<< SET YOUR BACKGROUND IMAGE HERE */
+    background-color: #DFDBCB; /* Fallback color */
+    background-attachment: fixed; /* Keeps the texture from scrolling with the page */
+    background-size: cover;
 }
 
+/* 2. Main Split-Screen Layout Container */
 .services-section-final {
     display: flex;
     width: 100%;
-    height: calc(100vh - 75px); /* Full height minus nav */
-    margin-top: 75px; /* Offset for sticky nav */
+    height: calc(100vh - 80px); /* Full height minus nav */
+    margin-top: 80px; /* Offset for sticky nav */
 }
 
-/* 2. Left Side: Content Wrapper with Transparent Effect */
+/* 3. Left Side: Content Wrapper with Transparent Effect */
 .services-content-wrapper {
-    flex: 1.2; /* Makes content area slightly wider */
+    flex: 1.1; /* Gives slightly more space to content */
     background-color: rgba(245, 242, 233, 0.85); /* Semi-Transparent Beige */
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px); /* This creates the frosted glass "bleed" effect */
     -webkit-backdrop-filter: blur(12px);
     padding: 80px;
-    overflow-y: auto; /* Allows scrolling if content overflows */
+    overflow-y: auto; /* Makes only this content area scrollable if needed */
 }
 
-/* 3. Right Side: Full-Height Image */
-.services-image-wrapper-final {
-    flex: 0.8;
-    overflow: hidden;
+/* 4. Right Side: Full-Height Image Wrapper */
+.services-image-wrapper {
+    flex: 0.9;
+    overflow: hidden; /* Hides any part of the image that might overflow */
 }
 
-.services-image-wrapper-final img {
+.services-image-wrapper img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Ensures the image fills the container without distortion */
 }
 
-/* 4. Typography and Font Corrections */
+/* 5. Typography and Font Corrections */
 .services-main-title {
     font-family: 'Playfair Display', serif;
     font-size: 3.5rem;
@@ -1321,14 +1322,27 @@ background: var(--color-background);
     max-width: 550px;
 }
 
-/* 5. Services Grid Styling */
-.services-grid-final {
+/* 6. Services Grid & Item Styling (Your Icons are Preserved) */
+.services-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px 50px;
+    gap: 20px 40px;
 }
 
-.service-item-final h3 {
+.service-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.service-icon svg {
+    width: 28px;
+    height: 28px;
+    color: #2c2a2a;
+    margin-top: 5px;
+}
+
+.service-info h3 {
     font-family: 'Playfair Display', serif;
     font-size: 1.5rem;
     font-weight: 600;
@@ -1336,7 +1350,7 @@ background: var(--color-background);
     margin-bottom: 12px;
 }
 
-.service-item-final p {
+.service-info p {
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
     color: #4b4949;
@@ -1344,63 +1358,47 @@ background: var(--color-background);
     margin-bottom: 25px;
 }
 
-/* 6. Button Styling */
-.enquire-btn-final {
+/* 7. Button Styling */
+.enquire-btn {
     font-family: 'Inter', sans-serif;
     font-weight: 600;
     font-size: 0.9rem;
     color: #FFFFFF;
     background-color: #2c2a2a;
-    padding: 14px 28px;
-    text-decoration: none;
+    padding: 12px 26px;
     border-radius: 8px;
+    text-decoration: none;
     text-transform: uppercase;
     transition: all 0.3s ease;
 }
 
-.enquire-btn-final:hover {
+.enquire-btn:hover {
     background-color: #3d5a5f; /* Muted teal on hover */
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-
-.service-icon {
-    flex-shrink: 0;
-    margin-top: 5px;
-}
-
-.service-icon svg {
-    width: 28px;
-    height: 28px;
-    color: var(--color-charcoal-700);
-    opacity: 0.8;
-}
-
-/* 7. Responsive Design */
+/* 8. Responsive Design */
 @media (max-width: 1200px) {
     .services-content-wrapper {
-        flex: 1;
         padding: 60px;
-    }
-    .services-image-wrapper-final {
-        flex: 1;
     }
 }
 
 @media (max-width: 992px) {
     .services-section-final {
-        flex-direction: column-reverse; /* Stacks image on top */
+        flex-direction: column-reverse; /* Stacks image on top of content on mobile */
         height: auto;
     }
-    .services-image-wrapper-final {
+    .services-image-wrapper {
+        flex: none; /* Reset flex property */
         height: 50vh;
         min-height: 350px;
     }
     .services-content-wrapper {
         padding: 60px 40px;
     }
-    .services-grid-final {
+    .services-grid {
         grid-template-columns: 1fr;
     }
 }
