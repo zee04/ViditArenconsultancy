@@ -1200,7 +1200,7 @@ background: var(--color-background);
 
 /* --- Services Page --- */
 .services-section::before {
-  background-image: url('images/concept2.PNG'); /* CHANGE THIS */
+  background-image: url('images/cadbg.gif'); /* CHANGE THIS */
 }
 
 /* --- Work Page: Past Projects --- */
@@ -1265,12 +1265,12 @@ background: var(--color-background);
 
 body.warm-theme {
     background-color: #F5F2E9; /* Warm beige background */
-    background-image: url('images/cadbg.GIF'); /* Subtle paper texture */
+    background-image: url('images/cadbg.gif'); /* Subtle paper texture */
 }
 
 .services-page-section {
     background: transparent;
-    padding: 120px 0;
+    padding: 120px ;
 }
 
 /* 2. MAIN 2-COLUMN PAGE LAYOUT */
@@ -1286,7 +1286,7 @@ body.warm-theme {
 
 /* 3. LEFT SIDE (SERVICES CONTENT) */
 .services-content-wrapper {
-    padding: 40px 0;
+    padding: 80px 0;
 }
 
 .services-title {
