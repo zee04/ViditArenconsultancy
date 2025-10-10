@@ -1264,7 +1264,7 @@ background: var(--color-background);
 
 
 body.warm-theme {
-    background-color: #F5F2E9; /* Warm beige background */
+    background-color: transparent; /* Warm beige background */
     background-image: url('images/cadbg.gif'); /* Subtle paper texture */
 }
 
