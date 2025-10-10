@@ -1200,7 +1200,7 @@ background: var(--color-background);
 
 /* --- Services Page --- */
 .services-section::before {
-  background-image: url('images/cadbg.gif'); /* CHANGE THIS */
+  background-image: url('images/concept2.PNG'); /* CHANGE THIS */
 }
 
 /* --- Work Page: Past Projects --- */
@@ -1268,13 +1268,9 @@ background: var(--color-background);
 
 /* 1. Body Styling with Background Image */
 .body-services-final {
-    /* My apologies for the previous error. Use your actual background image file here. */
-    background-image: url('images/concept2.PNG'); /* <<< CONFIRM THIS IS THE CORRECT PATH */
-    background-color: #EAE8E1; /* A neutral, light beige fallback color */
-    background-attachment: fixed; /* This keeps the background image static while the content scrolls */
-    background-size: cover; /* Ensures the image covers the entire background */
-    background-position: center center;
-    position: relative; /* This is necessary for the overlay effect to work correctly */
+    background-color: #EAE8E1; /* Sets a simple, solid fallback color for the page */
+    margin: 0;
+    padding: 0;
 }
 
 /* 2. Main Split-Screen Layout Container */
@@ -1285,15 +1281,36 @@ background: var(--color-background);
     margin-top: 60px; /* Offset for sticky nav */
 }
 
+/* Creates the blurred background image layer for the Services page */
+.services-section-final::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* MAKE SURE THIS PATH IS CORRECT */
+    background-image: url('images/concept2.PNG');
+    background-size: cover;
+    background-position: center;
+    z-index: 1; /* Places the image behind the content */
+    
+    /* This creates the blurred, faded look from your other pages */
+    filter: grayscale(80%) blur(5px) brightness(0.6);
+    opacity: 0.5;
+}
+
+
 /* 3. Left Side: Content Wrapper with Transparent Effect */
 .services-content-wrapper {
-    flex: 1.1; /* Gives slightly more space to content */
-    background-color: rgba(245, 242, 233, 0.85); /* Semi-Transparent Beige */
-    backdrop-filter: blur(12px); /* This creates the frosted glass "bleed" effect */
-    -webkit-backdrop-filter: blur(12px);
-    padding: 80px;
-    overflow-y: auto; /* Makes only this content area scrollable if needed */
+    flex: 1.2;
+    background-color: transparent; /* CRITICAL: This makes it see-through */
+    padding: 50px 80px; 
+    overflow-y: auto;
+    position: relative; /* Ensures it sits on top of the background layer */
+    z-index: 2;
 }
+
 
 /* 4. Right Side: Full-Height Image Wrapper */
 .services-image-wrapper {
