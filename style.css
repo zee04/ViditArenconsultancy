@@ -1473,151 +1473,119 @@ body.warm-theme {
 }
 
 /* About Section */
+/* ========================================================== */
+/* ===         FINAL ABOUT US PAGE POLISH & FIX          === */
+/* ========================================================== */
+
+/* Main container for the split-screen layout */
 .about-section {
-    min-height: 100vh;
+    min-height: calc(100vh - 80px); /* Adjusts height based on nav bar */
     display: flex;
-    align-items: stretch;
-    background-color: #6B7280; /* Cool blue-gray from reference */
-    position: relative;
 }
 
 .about-container {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Perfect 50/50 split */
-    min-height: 100vh;
+    grid-template-columns: 1fr 1fr; /* 50/50 split */
 }
 
-/* Left Side: Image */
+/* Left side (Image) styling */
 .about-image {
-    position: relative;
+    background-color: #374151; /* Dark fallback color */
     overflow: hidden;
-    background-color: #374151; 
 }
 
 .about-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
-    opacity: 1 !important;
+    opacity: 1 !important; /* Ensures image is not transparent */
 }
 
-/* Right Side: Content */
+/* Right side (Content) styling */
 .about-content {
-    background-color: #6B7280; /* Same cool blue-gray as reference */
+    background-color: #6B7280; /* Cool blue-gray */
+    color: #F9FAFB; /* Off-white for text */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
-    padding: 80px 60px;
-    color: white;
-  
+    padding: 60px 80px;
 }
 
+/* Main Title: "About Chef Vidit Aren" */
 .about-title {
-    font-family: 'Inter', sans-serif;
-    opacity: 1 !important;
-    font-size: 2.5rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    color: white;
-    margin-bottom: 40px;
-    line-height: 1.2;
+    font-family: 'Playfair Display', serif; /* Correct font */
+    font-size: 2.8rem;
+    font-weight: 600; /* Matching elegant weight */
+    margin-bottom: 20px;
+    line-height: 1.3;
+    color: #FFFFFF;
 }
 
-.about-text {
+/* Subtitle paragraph */
+.about-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #D1D5DB; /* Lighter gray for subtitle */
     margin-bottom: 50px;
     max-width: 500px;
-    opacity: 1 !important;
 }
 
-.about-text p {
+/* Secondary Title: "Our Passion" */
+.about-passion-title {
+    font-family: 'Playfair Display', serif; /* Correct font */
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #FFFFFF;
+}
+
+/* "Our Passion" text */
+.about-passion-text {
     font-family: 'Inter', sans-serif;
-    opacity: 1 !important;
     font-size: 1rem;
-    font-weight: 400;
     line-height: 1.7;
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 25px;
+    color: #D1D5DB;
+    margin-bottom: 50px;
+    max-width: 500px;
 }
 
-.about-text p:last-child {
-    margin-bottom: 0;
-}
-
-/* CTA Button */
+/* Button: "WORK WITH US" */
 .about-cta-btn {
     font-family: 'Inter', sans-serif;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 600;
     letter-spacing: 0.1em;
-    color: #6B7280;
-    background-color: white;
-    border: none;
-    padding: 18px 40px;
+    color: #374151; /* Dark text */
+    background-color: #F9FAFB; /* Off-white background */
+    padding: 16px 36px;
     text-decoration: none;
     text-transform: uppercase;
     transition: all 0.3s ease;
-    border-radius: 0; /* Sharp corners like in reference */
+    border-radius: 4px; /* Slightly rounded corners */
 }
 
 .about-cta-btn:hover {
-    background-color: rgba(255, 255, 255, 0.9);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    background-color: #FFFFFF;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
+/* Responsive adjustments */
+@media (max-width: 992px) {
     .about-container {
         grid-template-columns: 1fr;
-        grid-template-rows: 50vh 1fr;
+        min-height: auto;
     }
-    
+    .about-image {
+        height: 60vh;
+    }
     .about-content {
-        padding: 40px 30px;
-        justify-content: flex-start;
-        padding-top: 60px;
-      opacity: 1 !important;
-    }
-    
-    .about-title {
-        font-size: 2rem;
-        margin-bottom: 30px;
-      opacity: 1 !important;
-    }
-    
-    .about-text {
-        margin-bottom: 40px;
-      opacity: 1 !important;
-    }
-    
-    .about-text p {
-        font-size: 0.95rem;
-        margin-bottom: 20px;
-      opacity: 1 !important;
+        padding: 60px 40px;
     }
 }
 
-@media (max-width: 480px) {
-    .about-content {
-        padding: 30px 20px;
-        padding-top: 50px;
-      opacity: 1 !important;
-    }
-    
-    .about-title {
-        font-size: 1.8rem;
-      opacity: 1 !important;
-    }
-    
-    .about-cta-btn {
-        padding: 16px 35px;
-        font-size: 0.9rem;
-      opacity: 1 !important;
-    }
-}
 
 /* Contact Section */
 .contact-content {
