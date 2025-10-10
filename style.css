@@ -1280,7 +1280,7 @@ background: var(--color-background);
     display: flex;
     width: 100%;
     height: calc(100vh - 80px); /* Full height minus nav */
-    margin-top: 80px; /* Offset for sticky nav */
+    margin-top: 60px; /* Offset for sticky nav */
 }
 
 /* 3. Left Side: Content Wrapper with Transparent Effect */
