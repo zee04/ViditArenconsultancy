@@ -95,50 +95,67 @@
         </div>
     </div>
 </nav>
-
-
     <main>
+
        <!-- NEW HERO SECTION WITH SLIDESHOW -->
-<section id="home" class="hero-section">
-    <!-- The Slideshow Container -->
-    <div class="slideshow-container">
-        <!-- Add your images here -->
-        <div class="slide" style="background-image: url('images/cornback.JPG');"></div>
-        <div class="slide" style="background-image: url('images/souffleback.JPG');"></div>
-        <div class="slide" style="background-image: url('images/jarback.jpg');"></div>
-         <div class="slide" style="background-image: url('images/whiteback.JPG');"></div>
-         </div>
-        <!-- Add more slides as needed -->
-
-        <!-- The sharp, professional navigation arrows -->
-    <div class="slideshow-arrow prev">&#10094;</div>
-    <div class="slideshow-arrow next">&#10095;</div>
- 
-
-    <!-- Centered Hero Content -->
-    <div class="hero-content-container">
-        <div class="hero-text">
-            <!-- "Culinary Innovator" and portrait are removed -->
-            <p class="hero-subtitle">We are a boutique Chef consultancy dedicated to curate each project personally by Chef Vidit Aren. With over 14 years of experience in catering to A-list celebrities and top-tier corporates, we create unique experiences that genuinely resonate with our clients.</p>
-            <div class="hero-actions">
-                <a href="service.html" class="btn">Our Services</a>
-                <a href="work.html" class="btn">View Projects</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-        <!-- About Preview Section -->
-        <section class="about-preview">
-            <div class="container">
-                <div class="glass-card large-card">
-                    <h2>A Boutique Approach to Culinary Excellence</h2>
-                    <p>Our passion for global cuisines and innovative techniques allows us to create unique experiences that genuinely resonate with our clients. We take pride in our commitment to quality and artistry, aiming to make every project memorable.</p>
-                    <a href="about.html" class="btn btn--primary">Learn More About Us</a>
+ <section class="hero-section">
+        <div class="slideshow-container">
+            
+            <!-- Slide 1 -->
+            <div class="slide active" style="background-image: url('images/cornback.JPG');">
+                <div class="hero-content-container">
+                    <h1 class="hero-title">Boutique Culinary & Hospitality Consultancy</h1>
+                    <p class="hero-subtitle">We are a boutique chef consultancy dedicated to curating each project personally by Chef Vidit Aren. With over 14 years of experience, we create unique experiences that genuinely resonate with our clients.</p>
+                    <div class="hero-buttons">
+                        <a href="service-1.html" class="btn btn-primary">Our Services</a>
+                        <a href="work.html" class="btn btn-secondary">View Projects</a>
+                    </div>
                 </div>
             </div>
-        </section>
+
+            <!-- Slide 2 -->
+            <div class="slide" style="background-image: url('images/souffleback.JPG');">
+                <div class="hero-content-container">
+                    <h1 class="hero-title">From Concept to Creation</h1>
+                    <p class="hero-subtitle">Specializing in end-to-end restaurant development, we transform bold ideas into thriving culinary destinations. Your vision is our blueprint.</p>
+                    <div class="hero-buttons">
+                        <a href="service-1.html" class="btn btn-primary">Turn-Key Solutions</a>
+                        <a href="about.html" class="btn btn-secondary">Meet The Chef</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="slide" style="background-image: url('images/jarback.jpg');">
+                <div class="hero-content-container">
+                    <h1 class="hero-title">The Art of the Plate</h1>
+                    <p class="hero-subtitle">Our expertise in food styling and photography brings your menu to life, creating stunning visual content that captivates and entices.</p>
+                    <div class="hero-buttons">
+                        <a href="work.html" class="btn btn-primary">See Our Work</a>
+                        <a href="contact.html" class="btn btn-secondary">Enquire Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="slide" style="background-image: url('images/whiteback.JPG');">
+                <div class="hero-content-container">
+                    <h1 class="hero-title">The Art of the Plate</h1>
+                    <p class="hero-subtitle">Our expertise in food styling and photography brings your menu to life, creating stunning visual content that captivates and entices.</p>
+                    <div class="hero-buttons">
+                        <a href="work.html" class="btn btn-primary">See Our Work</a>
+                        <a href="contact.html" class="btn btn-secondary">Enquire Now</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Navigation Arrows -->
+        <div class="slideshow-arrow prev" onclick="changeSlide(-1)">&#10094;</div>
+        <div class="slideshow-arrow next" onclick="changeSlide(1)">&#10095;</div>
+    </section>
+      
     </main>
 
     <!-- Footer -->
