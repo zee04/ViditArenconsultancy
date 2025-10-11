@@ -982,60 +982,71 @@ background: var(--color-background);
 /* ===   FINAL DYNAMIC HERO SLIDESHOW STYLES   === */
 /* ============================================= */
 
+/* ======================================================= */
+/* ===  DEFINITIVE HERO SLIDESHOW FIX (VISIBILITY & CLICKS) === */
+/* ======================================================= */
+
+/* 1. Main Hero Section Container */
 .hero-section {
     position: relative;
     height: 100vh;
     width: 100%;
     overflow: hidden;
-    color: white;
 }
 
-.slideshow-container::after {
-    content: '';
+/* 2. Slideshow Container (Holds Slides and Overlay) */
+.slideshow-container {
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.45);
-    z-index: 1; /* This is the change */
 }
 
-
+/* 3. Individual Slide Styling & Stacking */
 .slide {
     background-size: cover;
     background-position: center;
     position: absolute;
     width: 100%; height: 100%;
     opacity: 0;
-    transition: opacity 1.2s ease-in-out;
+    transition: opacity 1.5s ease-in-out;
     display: flex;
     justify-content: center;
-    align-items: flex-end; /* Aligns content to the bottom */
+    align-items: flex-end;
+    /* This places the slide and its content at a middle layer */
+    z-index: 2;
 }
 
 .slide.active {
     opacity: 1;
 }
 
-.hero-content-container {
-    position: relative;
-    z-index: 3; /* Ensures content is on top of the dark overlay */
-    text-align: center;
-    max-width: 850px;
-    padding: 0 20px 12vh; /* Pushes content up from the bottom */
-    animation: fadeInContent 1.5s ease-out;
+/* 4. The Dark Overlay for Text Contrast */
+.slide::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.45); /* Dark tint for contrast */
+    /* This places the overlay AT THE BACK of the slide, behind the content */
+    z-index: 1;
 }
 
-@keyframes fadeInContent {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+/* 5. Hero Content (Text & Buttons) - The Topmost Layer */
+.hero-content-container {
+    position: relative;
+    text-align: center;
+    max-width: 850px;
+    padding: 0 20px 12vh;
+    /* This ensures the content is ABOVE the overlay */
+    z-index: 3;
 }
 
 .hero-title {
     font-family: 'Playfair Display', serif;
     font-size: clamp(2.8rem, 5vw, 4.5rem);
     font-weight: 600;
-    color: #FFFFFF;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+    color: #FFFFFF; /* Solid white */
+    text-shadow: 0 2px 10px rgba(0,0,0,0.7);
     margin-bottom: 20px;
 }
 
@@ -1043,16 +1054,15 @@ background: var(--color-background);
     font-family: 'Inter', sans-serif;
     font-size: 1.2rem;
     line-height: 1.7;
-    color: #FFFFFF; /* Changed to solid white */
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7); /* Stronger shadow for high contrast */
+    color: #FFFFFF; /* Solid white */
+    text-shadow: 0 2px 8px rgba(0,0,0,0.7);
     margin-bottom: 35px;
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
 }
 
-
-/* New Button Styles */
+/* 6. Hero Buttons */
 .hero-buttons {
     display: flex;
     justify-content: center;
@@ -1071,7 +1081,6 @@ background: var(--color-background);
     letter-spacing: 0.5px;
     text-transform: uppercase;
 }
-
 .hero-buttons .btn-primary {
     background-color: #FFFFFF;
     color: #1a1a1a;
@@ -1081,7 +1090,6 @@ background: var(--color-background);
     border-color: #FFFFFF;
     color: #FFFFFF;
 }
-
 .hero-buttons .btn-secondary {
     background-color: transparent;
     border: 2px solid rgba(255, 255, 255, 0.8);
@@ -1093,14 +1101,13 @@ background: var(--color-background);
     border-color: #FFFFFF;
 }
 
-/* Arrow Styles (No Dark Circle) */
+/* 7. Arrow Navigation - The Absolute Top Layer */
 .slideshow-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 4;
-    color: rgba(255, 255, 255, 0.6);
-    background: none; /* Removed background */
+    color: rgba(255, 255, 255, 0.7);
+    background: none;
     width: 60px;
     height: 60px;
     display: flex;
@@ -1109,6 +1116,8 @@ background: var(--color-background);
     cursor: pointer;
     font-size: 36px;
     transition: color 0.3s ease;
+    /* This ensures arrows are on top of EVERYTHING */
+    z-index: 4;
 }
 .slideshow-arrow:hover {
     color: #FFFFFF;
