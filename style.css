@@ -310,12 +310,10 @@ html {
 
 body {
   background: var(--color-background);
-  color: var(--color-text-dark); 
-  font-family: var(--font-body); /* This sets Inter as the default */
-  line-height: 1.6;
-  overflow-x: hidden;
-  margin: 0;
-  padding: 0;
+    color: var(--color-text-dark); 
+    font-family: var(--font-body); /* This sets Inter as the default */
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
 *,
@@ -331,12 +329,10 @@ h3,
 h4,
 h5,
 h6 {
-      margin: 0;
-     font-family: var(--font-display); /* This sets Playfair Display for all headings */
+      font-family: var(--font-display); /* This sets Playfair Display for all headings */
     font-weight: 600; /* A good, strong weight for Playfair */
-    line-height: var(--line-height-tight);
     color: var(--color-primary);
-   letter-spacing: -0.02em;
+    letter-spacing: -0.02em;
 }
 
 h1 {
