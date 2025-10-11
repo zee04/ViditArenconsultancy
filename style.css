@@ -979,7 +979,7 @@ background: var(--color-background);
 }
 
 /* ============================================= */
-/* === FINAL, CLEAN HERO SECTION & SLIDESHOW === */
+/* ===   FINAL DYNAMIC HERO SLIDESHOW STYLES   === */
 /* ============================================= */
 
 .hero-section {
@@ -988,135 +988,93 @@ background: var(--color-background);
     width: 100%;
     overflow: hidden;
     color: white;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
 }
 
-.slideshow-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-}
-
+/* This dark overlay is CRITICAL for text visibility on any image */
 .slideshow-container::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.40); /* Dark tint for contrast */
     z-index: 2;
 }
 
 .slide {
-    /* Essential background styling */
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    
-    /* Essential positioning */
     position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    
-    /* Default hidden state */
+    width: 100%; height: 100%;
     opacity: 0;
-    z-index: 1;
-    
-    /* Smooth animation */
-    transition: opacity 1.5s ease-in-out;
+    transition: opacity 1.2s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Aligns content to the bottom */
 }
 
 .slide.active {
     opacity: 1;
-    z-index: 2;
-}
-
-.slideshow-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 3;
-    background-color: rgba(0, 0, 0, 0.2);
-    color: white;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 24px;
-    transition: background-color 0.3s ease;
-}
-
-.slideshow-arrow:hover {
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.slideshow-arrow.prev {
-    left: 40px;
-}
-
-.slideshow-arrow.next {
-    right: 40px;
 }
 
 .hero-content-container {
     position: relative;
-    z-index: 3;
+    z-index: 3; /* Ensures content is on top of the dark overlay */
     text-align: center;
-    max-width: 800px;
-    padding: 0 20px 10vh;
+    max-width: 850px;
+    padding: 0 20px 12vh; /* Pushes content up from the bottom */
+    animation: fadeInContent 1.5s ease-out;
 }
 
-.hero-content-container .hero-subtitle {
-    color: white;
-    font-size: 1.25rem;
+@keyframes fadeInContent {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 600;
+    color: #FFFFFF;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+    margin-bottom: 20px;
+}
+
+.hero-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
     line-height: 1.7;
-    margin-bottom: 30px;
+    color: rgba(255, 255, 255, 0.9);
     text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+    margin-bottom: 35px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.hero-actions {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-
-/* 5. The Buttons */
+/* New Button Styles */
 .hero-buttons {
     display: flex;
     justify-content: center;
     gap: 15px;
 }
 
-/* The buttons will inherit from your existing .btn styles,
-   but we ensure they are specifically styled for the hero section */
 .hero-buttons .btn {
     text-decoration: none;
-    padding: 12px 28px;
+    padding: 14px 32px;
     border-radius: 50px;
-    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
     transition: all 0.3s ease;
     border: 2px solid transparent;
     font-size: 0.9rem;
     letter-spacing: 0.5px;
+    text-transform: uppercase;
 }
 
 .hero-buttons .btn-primary {
     background-color: #FFFFFF;
-    color: #000000;
+    color: #1a1a1a;
 }
-
 .hero-buttons .btn-primary:hover {
     background-color: transparent;
     border-color: #FFFFFF;
@@ -1125,14 +1083,38 @@ background: var(--color-background);
 
 .hero-buttons .btn-secondary {
     background-color: transparent;
-    border: 2px solid #FFFFFF;
-    color: #FFFFFF;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.9);
 }
-
 .hero-buttons .btn-secondary:hover {
     background-color: #FFFFFF;
-    color: #000000;
+    color: #1a1a1a;
+    border-color: #FFFFFF;
 }
+
+/* Arrow Styles (No Dark Circle) */
+.slideshow-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 4;
+    color: rgba(255, 255, 255, 0.6);
+    background: none; /* Removed background */
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 36px;
+    transition: color 0.3s ease;
+}
+.slideshow-arrow:hover {
+    color: #FFFFFF;
+}
+.slideshow-arrow.prev { left: 30px; }
+.slideshow-arrow.next { right: 30px; }
+
 
 
 @keyframes float {
