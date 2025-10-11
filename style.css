@@ -990,14 +990,13 @@ background: var(--color-background);
     color: white;
 }
 
-/* This dark overlay is CRITICAL for text visibility on any image */
 .slideshow-container::after {
     content: '';
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.45); /* Slightly darker tint for better contrast */
-    z-index: 2;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1; /* This is the change */
 }
 
 
