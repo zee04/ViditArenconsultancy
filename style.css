@@ -1165,7 +1165,7 @@ background: var(--color-background);
   
   /* The exact visual effect from your code */
   filter: none;
-  opacity: 1;
+  opacity: 0.5;
 }
 
 /* --- This keeps the main content (like glass cards) on top --- */
@@ -1275,8 +1275,8 @@ background: var(--color-background);
     z-index: 1; /* Places the image behind the content */
     
     /* This creates the blurred, faded look from your other pages */
-    filter: grayscale(80%) blur(5px) brightness(0.6);
-    opacity: 0.5;
+    filter: none;
+    opacity: 1;
 }
 
 
