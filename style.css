@@ -2150,7 +2150,25 @@ a.btn.btn--secondary:focus {
 }
 .modal-close-btn:hover { opacity: 1; }
 
-
+.rectangle-btn {
+  border-radius: 12px !important;      /* Less rounding for a modern rectangle; try 0 for a sharp rectangle, or 6px/12px for soft corners */
+  padding: 18px 36px !important;       /* A bit more padding than the image for firmness */
+  font-size: 1.1rem !important;        /* Optional: adjust for visual balance */
+  font-weight: 600 !important;         /* Matches the strength of your design */
+  background: #fff !important;         /* Matches the shown button: white background */
+  color: #232323 !important;           /* Dark text for contrast */
+  border: none !important;             /* No border for a clean look */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07); /* Optional: subtle shadow for depth */
+  display: inline-block;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+.rectangle-btn:hover {
+  background: #f4f4f4 !important;
+  color: #111 !important;
+  cursor: pointer;
+}
 
 
 
