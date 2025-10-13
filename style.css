@@ -1165,7 +1165,7 @@ background: var(--color-background);
   
   /* The exact visual effect from your code */
   filter: none;
-  opacity: 0.2;
+  opacity: 0.8;
 }
 
 /* --- This keeps the main content (like glass cards) on top --- */
