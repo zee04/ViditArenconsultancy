@@ -1169,7 +1169,7 @@ background: var(--color-background);
 }
 
 /* --- This keeps the main content (like glass cards) on top --- */
-.about-preview .container,
+
 .about-section .container,
 .services-section .container,
 .projects-section .container,
@@ -1182,14 +1182,10 @@ background: var(--color-background);
 /*              ASSIGN UNIQUE BACKGROUND IMAGES            */
 /* ======================================================= */
 
-/* --- Homepage 'About' Preview --- */
-.about-preview::before {
-  background-image: url('images/panback.jpg');
-}
 
 /* --- About Page --- */
 .about-section::before {
-  background-image: url('images/forkback.JPG');
+  background-image: url('images/serviceback.jpg');
 }
 
 /* --- Services Page --- */
@@ -1218,17 +1214,6 @@ background: var(--color-background);
 }
 
 
-/* --- Your original styles for the content remain the same --- */
-.about-preview .glass-card {
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.about-preview h2 {
-  margin-bottom: var(--space-24);
-  color: var(--color-gold-accent);
-}
 
 /* Sections */
 .services-section,
