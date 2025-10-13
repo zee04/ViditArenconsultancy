@@ -200,7 +200,7 @@ class FlippingCoverFlow {
         <h3 style="color: #FFFFFF !important; margin-bottom: 15px;">${project.title}</h3>
         ${project.type ? `<p class="project-type" style="color: #CCCCCC !important; font-style: italic; margin-bottom: 15px;">${project.type}</p>` : ''}
         <p style="color: #FFFFFF !important; line-height: 1.6;">${project.description}</p>
-        <a href="contact.html" class="btn btn-primary btn-rectangle" style="margin-top:24px;display:inline-block;">Start your own project</a>
+        <a href="contact.html" class="btn btn-primary hero-buttons" style="margin-top:24px;display:inline-block;">Start your own project</a>
     `;
     
     // FORCE the flip-back to have the right colors
