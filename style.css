@@ -1363,7 +1363,8 @@ background: var(--color-background);
 }
 
 .enquire-btn:hover {
-    background-color: #3d5a5f; /* Muted teal on hover */
+    color: #2c2a2a;
+    background-color: #FFFFFF; /* Muted teal on hover */
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
