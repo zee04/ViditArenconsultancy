@@ -1284,7 +1284,7 @@ background: var(--color-background);
     width: 100%;
     height: 100%;
     /* MAKE SURE THIS PATH IS CORRECT */
-    background-image: url('images/cadbg.gif');
+    background-image: url('images/serviceback,jpg');
     background-size: cover;
     background-position: center;
     z-index: 1; /* Places the image behind the content */
