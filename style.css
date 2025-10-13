@@ -1206,7 +1206,7 @@ background: var(--color-background);
 /* --- Media Page --- */
 /* This now ONLY targets the Media page since the Work sections have more specific rules */
 .projects-section::before {
-  background-image: url('images/onion.PNG'); /* CHANGE THIS */
+  background-image: url('images/turkeytapgif.gif'); /* CHANGE THIS */
 }
 /* --- Contact Page --- */
 .contact-section::before {
