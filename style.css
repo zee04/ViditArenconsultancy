@@ -1284,7 +1284,7 @@ background: var(--color-background);
 .services-content-wrapper {
     flex: 1.2;
     background-color: transparent; /* CRITICAL: This makes it see-through */
-    padding: 50px 80px; 
+    padding: 80px 80px; 
     overflow-y: auto;
     position: relative; /* Ensures it sits on top of the background layer */
     z-index: 2;
