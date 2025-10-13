@@ -1164,8 +1164,8 @@ background: var(--color-background);
   background-position: center;
   
   /* The exact visual effect from your code */
-  filter: grayscale(100%) blur(5px) brightness(0.5);
-  opacity: 0.4;
+  filter: none;
+  opacity: 1;
 }
 
 /* --- This keeps the main content (like glass cards) on top --- */
