@@ -1587,86 +1587,99 @@ body, html {
 
 
 /* Contact Section */
-
-.contact-section {
+.contact-section-final {
   display: flex;
   width: 100%;
   height: calc(100vh - 75px);
-  background: #6B7280 !important; /* Matches about page */
   margin-top: 75px;
 }
 
-.contact-content {
+.contact-content-final {
   flex: 1;
-  background: #6B7280 !important;
+  background-color: #6B7280 !important;
   color: #F9FAFB !important;
-  padding: 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding: 80px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
 }
 
 .contact-image-final {
   flex: 1;
   background-color: #374151 !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  overflow: hidden;
 }
+
 .contact-image-final img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
 }
 
-.contact-form .form-group {
-  margin-bottom: var(--space-20);
+.contact-form-simple .form-group {
+  margin-bottom: 20px;
 }
 
-.contact-form .form-label {
-  color: var(--color-gold-light);
-  margin-bottom: var(--space-8);
+.contact-form-simple .form-label {
+  color: #F9FAFB !important;
+  margin-bottom: 8px;
   font-weight: 500;
+  display: block;
 }
 
-.contact-form .form-control {
+.contact-form-simple .form-control {
+  width: 100%;
+  padding: 12px 16px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  color: var(--color-warm-white);
-  border-radius: var(--radius-base);
-  transition: all var(--duration-medium) var(--ease-standard);
+  color: #F9FAFB;
+  border-radius: 4px;
+  font-family: Inter, sans-serif;
 }
 
-.contact-form .form-control:focus {
-  border-color: var(--color-gold-accent);
+.contact-form-simple .form-control:focus {
+  border-color: #50A3AB;
   background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.2);
+  outline: none;
 }
 
-.contact-info .contact-item {
-  margin-bottom: var(--space-24);
+.contact-info-simple .contact-item {
+  margin-bottom: 24px;
 }
 
-.contact-info h3 {
-  color: var(--color-gold-accent);
-  margin-bottom: var(--space-8);
-  font-size: var(--font-size-lg);
+.contact-item-title {
+  color: #F9FAFB !important;
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-weight: 600;
 }
 
-/* This targets the buttons inside the contact details card */
-.contact-details .btn--fullwidth {
-  margin-bottom: 24px; /* Adds space after each button */
+.contact-item-text {
+  color: #D1D5DB !important;
+  margin: 0;
 }
 
-.whatsapp-link {
-  color: var(--color-gold-accent);
-  border-color: var(--color-gold-accent);
+.contact-links {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
-.whatsapp-link:hover {
-  background: var(--color-gold-accent);
-  color: var(--color-charcoal-primary);
+.contact-link {
+  color: #50A3AB !important;
+  text-decoration: none;
+  padding: 8px 16px;
+  border: 1px solid #50A3AB;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: all 0.3s ease;
 }
+
+.contact-link:hover {
+  background: #50A3AB;
+  color: #374151 !important;
+}
+
 
 /* Button Overrides */
 .btn {
