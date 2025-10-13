@@ -1276,7 +1276,7 @@ background: var(--color-background);
     
     /* This creates the blurred, faded look from your other pages */
     filter: none;
-    opacity: 1;
+    opacity: 0;
 }
 
 
