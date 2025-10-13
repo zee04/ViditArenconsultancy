@@ -1193,20 +1193,12 @@ background: var(--color-background);
   background-image: url('images/concept2.PNG'); /* CHANGE THIS */
 }
 
-/* --- Work Page: Past Projects --- */
-#past-projects.projects-section::before {
-  background-image: url('images/back1.png'); /* CHANGE THIS */
-}
 
-/* --- Work Page: Ongoing Projects --- */
-#ongoing-projects.projects-section::before {
-  background-image: url('images/back2.png'); /* CHANGE THIS */
-}
 
 /* --- Media Page --- */
 /* This now ONLY targets the Media page since the Work sections have more specific rules */
 .projects-section::before {
-  background-image: url('images/turkeytapgif.gif'); /* CHANGE THIS */
+  background-image: url('images/butterbg.gif'); /* CHANGE THIS */
 }
 /* --- Contact Page --- */
 .contact-section::before {
