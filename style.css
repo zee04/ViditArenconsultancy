@@ -1135,7 +1135,7 @@ background: var(--color-background);
 /* ======================================================= */
 
 /* --- Main Container Styling for ALL relevant sections --- */
-.about-preview,
+.media-section,
 .about-section,
 .services-section,
 .projects-section,
@@ -1146,7 +1146,7 @@ background: var(--color-background);
 }
 
 /* --- This creates the background image layer itself --- */
-.about-preview::before,
+.media-section::before,
 .about-section::before,
 .services-section::before,
 .projects-section::before,
@@ -1169,6 +1169,7 @@ background: var(--color-background);
 
 .about-section .container,
 .services-section .container,
+.media-section .container,
 .projects-section .container,
 .contact-section .container {
     position: relative;
@@ -1191,7 +1192,6 @@ background: var(--color-background);
 }
 
 
-
 /* --- Media Page --- */
 /* This now ONLY targets the Media page since the Work sections have more specific rules */
 .projects-section::before {
@@ -1212,6 +1212,7 @@ background: var(--color-background);
 .services-section,
 .projects-section,
 .about-section,
+.media-section,
 .contact-section {
   padding: 100px var(--space-24);
 }
