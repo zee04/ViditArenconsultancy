@@ -1628,8 +1628,8 @@ body, html {
 }
 
 .contact-form-simple .form-control {
-  width: 100%;
-  padding: 12px 16px;
+  max-width: 340px; 
+  padding: 10px 14px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: #F9FAFB;
@@ -1679,8 +1679,28 @@ body, html {
   background: #50A3AB;
   color: #374151 !important;
 }
+.info-row {
+  display: flex;
+  gap: 24px;
+  margin-top: 24px;
+}
 
+.info-row .contact-item {
+  min-width: 180px;
+  flex: 1 1 0;
+}
 
+/* Responsive: Stack on mobile */
+@media (max-width: 900px) {
+  .info-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .info-row .contact-item {
+    min-width: unset;
+    width: 100%;
+  }
+}
 
 /* Button Overrides */
 .btn {
