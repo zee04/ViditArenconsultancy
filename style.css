@@ -1522,6 +1522,7 @@ body, html {
 
 .about-title-final {
     font-size: 2.8rem !important;
+  margin-top: 32px !important;
     margin-bottom: 20px !important;
 }
 
@@ -1590,7 +1591,7 @@ body, html {
 .contact-section-final {
   display: flex;
   width: 100%;
-  height: calc(100vh - 75px);
+ min-height: 100vh;
   margin-top: 75px;
 }
 
@@ -1599,6 +1600,8 @@ body, html {
   background-color: #6B7280 !important;
   color: #F9FAFB !important;
   padding: 80px !important;
+  padding-top: 48px;
+  padding-bottom: 48px;
   display: flex !important;
   flex-direction: column !important;
   justify-content: center !important;
@@ -1629,6 +1632,7 @@ body, html {
 
 .contact-form-simple .form-control {
   max-width: 340px; 
+  width: 100%;
   padding: 10px 14px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.2);
