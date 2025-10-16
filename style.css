@@ -1187,6 +1187,7 @@ background: var(--color-background);
 }
 
 /* --- Services Page --- */
+
 .services-section::before {
   background-image: url('images/concept2.PNG'); /* CHANGE THIS */
 }
