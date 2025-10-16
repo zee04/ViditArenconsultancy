@@ -2228,6 +2228,99 @@ a.btn.btn--secondary:focus {
   cursor: pointer;
 }
 
+/* ======================================================== */
+/* MEDIA PAGE CARD STYLES
+/* ======================================================== */
+
+/* Apply styles only to cards inside the media section */
+.media-section .projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 28px;
+}
+
+.media-section .project-card {
+  min-height: 520px; /* This increases card size */
+  background: #F5F5DC; /* This is the beige background */
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  /* Override old styles */
+  backdrop-filter: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.media-section .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.media-section .project-image {
+  height: auto;
+  aspect-ratio: 16 / 9; /* Ensures a consistent image shape */
+  margin-bottom: 0;
+}
+
+/* Your new content wrapper */
+.media-section .media-content {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Fills remaining card space */
+}
+
+/* New text styles for beige background */
+.media-section .project-card h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.65rem;
+  color: #232323; /* Dark text for contrast */
+  margin-bottom: 12px;
+}
+
+.media-section .project-card p {
+  color: #3a3a3a; /* Slightly lighter dark text */
+  font-size: 0.98rem;
+  line-height: 1.55;
+  margin-bottom: 18px;
+  flex-grow: 1; /* Pushes the button to the bottom */
+}
+
+/* Your new button style */
+.media-section .btn-media {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 6px;
+  border: 1px solid #232323;
+  color: #232323;
+  background: transparent;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  margin-top: auto; /* Aligns button to the bottom */
+  align-self: flex-start;
+  transition: all 0.25s ease;
+}
+
+.media-section .btn-media:hover {
+  background: #232323;
+  color: #F5F5DC; /* Beige text on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .media-section .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .media-section .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
 
 
